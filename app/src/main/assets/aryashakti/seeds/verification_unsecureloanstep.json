@@ -1,0 +1,32 @@
+[
+    {
+        "model": "verification.UnsecureLoanStep",
+        "pk": 1,
+        "fields": {
+            "name": "Document Upload",
+            "slug": "Document Upload",
+            "created_by": 1,
+            "updated_by": 1
+        }
+    },
+    {
+        "model": "verification.UnsecureLoanStep",
+        "pk": 2,
+        "fields": {
+            "name": "Verification of Document",
+            "slug": "Verification of Document",
+            "created_by": 1,
+            "updated_by": 1
+        }
+    },
+    {
+        "model": "verification.UnsecureLoanStep",
+        "pk": 3,
+        "fields": {
+            "name": "Loan Sanctioned",
+            "slug": "Loan Sanctioned",
+            "created_by": 1,
+            "updated_by": 1
+        }
+    }
+]

@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pan Verification Arya</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" /> 
+       <!-- Include Select2 CSS -->
+       <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
+       <!-- Include Select2 JS -->
+       <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+   
+    <style>
+     *{
+    margin: 0;
+    padding: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+p{
+  margin-top: 10px ;
+}
+html,body{
+    width: 100%;
+    height: 100%;
+}
+
+header{
+    width: 100%;
+    padding: 12px 0px;
+    display: flex;
+    align-items: center;
+    background-color: #127960;
+    color: #fff;
+    line-height: 24px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+header h2{
+    font-weight: 400;
+}
+.input-body-div{
+    padding-top: 16px;
+    padding-left: 16px;
+    padding-right: 16px;
+    height: 85%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.input-body-div input[type="text"],.input-body-div input[type="date"],select {
+    width: 100%;
+    height: 40px;
+    border-radius: 4px;
+    border: 1px solid #b6b6b6;
+    padding-left: 16px;
+    margin-top: 0px;
+}
+.input-body-div label{
+    display: flex;
+    align-items: center;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+.input-body-div label p{
+    width: 100%;
+    line-height: 18px;
+}
+.input-body-div label input[type="checkbox"] {
+    width: 25px;
+    height: 25px;
+    border-radius: 4px;
+    margin-right: 12px;
+    border: 1px solid #b6b6b6;
+}
+.input-body-div .submit{
+    width: 100%;
+    border-radius: 8px;
+    border: none;
+    padding: 16px 0px;
+    background-color: #127960;;
+    color: #fff;
+    font-size: 16px;
+    margin-top: 20px;
+}
+.input-body-div .submit:disabled{
+    background-color: #b6b6b6;
+}
+.modal-container {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    /* display: flex; */
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .modal-content {
+    position: absolute;
+    z-index: 2;
+    background-color: #fff;
+    width: 100%;
+    bottom: 0;
+    height: 40%;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+    padding-top: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .modal-content h2{
+    margin-left: 24px;
+    font-size: 28px;
+    color: #575757;
+  }
+  .us-btns{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 16px;
+  }
+  .us-btns button{
+    width: 46%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 8px;
+    border: none;
+    color: #fff;
+    font-size: 16px;
+  }
+  .us-btns button:first-child{
+    margin-left: 3%;
+    background-color: rgb(255, 179, 37);
+  }
+  .us-btns button:last-child{
+    margin-right: 3%;
+    background-color: #127960;;
+  }
+  .modal-background {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+  }
+  
+  /* .modal-container.hide {
+    display: none;
+  } */
+
+  .open{
+    display: flex !important;
+  }
+
+  .red{
+    color: red;
+    font-size: 12px;
+    margin-top: 6px;
+  }
+  .error{
+    display: none;
+  }
+
+  .modal-container2 .modal-content{
+    align-items: center;
+  }
+  .modal-container2 .modal-content div h2{
+    margin-top: 60px;
+    color: green !important;
+  }
+
+  .modal-container2 .modal-content a{
+    margin-bottom: 40px;
+    color: rgb(0, 129, 198);
+  }
+
+  #error{
+    color: red;
+    font-weight: bold;
+    font-size: 20px;
+  }
+  #loader {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  background: rgba(0,0,0,0.75) url(https://media.tenor.com/On7kvXhzml4AAAAj/loading-gif.gif) no-repeat center center;
+  z-index: 10000;
+}
+.userCard{
+  margin-top :10px ;
+  border:1px solid #000;
+  padding: 12px 8px 12px 8px;
+    background: #f8f8f8;
+    position: relative;
+}
+.crossIconCSS{
+  height: 24px;
+    width: 24px;
+    border-radius: 50%;
+    background: white;
+    color: #f00000;
+    position: absolute;
+    right: -5px;
+    top: -5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.08);
+}
+
+
+/* Style for Select2 */
+.select2-container--default .select2-selection--single {
+            height: 40px;
+            border-radius: 4px;
+            border: 1px solid #b6b6b6;
+            padding-left: 16px;
+            margin-top: 0px;
+        }
+
+        .select2-container--default .select2-selection--single .select2-selection__arrow {
+            height: 38px;
+        }
+
+        .select2-container--default .select2-selection--single .select2-selection__rendered {
+            line-height: 38px;
+        }
+
+        .select2-container--default .select2-selection--single .select2-selection__arrow b {
+            margin-top: 5px;
+        }
+
+
+    </style>
+</head>
+<body>
+  
+    <!-- <header>
+        <h2 style="padding-left: 20px;">Arya Mitra</h2>
+    </header> -->
+    <div class="input-body-div">
+      {% if token %}
+        <form id="submit_pan" method="post" action="/api/v1/verify/pan_verify/">
+          <input type="hidden" name="type_pan" value="businessPan"/>
+            <div>
+              <div id="error">
+
+              </div>
+              <h2>Provide your organization PAN</h2>
+                <p>We need this to analyze the financial eligibility of your organization.</p>
+              
+          <h4 style="margin-top: 40px;">Enter your Business Pan Number</h4>
+            
+            <input required type="text" id="pan_value" name="pan_number"  class="pan-number" placeholder="Enter your Business Pan Number">
+            <p class="red error">Enter pan number to continue</p>
+        </div>
+        <div>
+          <!-- Replace input with select -->
+          <h4>Select your referal mail</h4>
+          <select required id="bd_email"  name="bd_email" class="pan-number" style="width: 100%;">
+            <option value="" disabled selected>Select your reference mail</option>
+            {% for data in bd_email %}
+                <option value="{{ data.email }}">{{ data.name }} ( {{ data.email }} )</option>
+            {% endfor %}
+        </select> 
+        </div>
+           
+            <div style="position: fixed; bottom: 0px; background-color: #fff;width: 100%; padding: 16px;right: 0px;">
+              <label><input type="checkbox" class="pan-number" required/><p style="font-weight: normal;">I agree to let Arya Dhan fetch my company details, CIBIL scores of my company and directors.</p></label>
+                <label>
+                  
+                <button class="submit open-btn" disabled>CONTINUE</button>
+                </label>
+            </div>      
+        </form>
+      {% else %}
+      <h4 style="text-align: center; padding: 30px;"> Token is expired or does not exist.</h4>  
+      {% endif %}
+    </div>
+
+
+  
+
+   
+    <div class="modal-container" id="show_question" style="display:none">
+      
+        <div class="modal-content">
+            <div>
+              <h2>Is this you!</h2>
+              <h2 class="pan-holder-name" id="show_pan_data">Name</h2>
+              <h2 class="pan-holder-name" id="show_pan_number">Number</h2>
+            </div>
+            <div class="us-btns">
+                <button id="no" class="close-btn">NOT US</button>
+              <button id="yes" class="success-btn">IT's US</button>
+            </div>
+            </div>
+            <div class="modal-background"></div>
+         
+        <!-- Is this you ?
+        <button id="yes">Yes</button>
+        <button id="no">No</button>
+        <div id="show_pan_data"></div> -->
+    </div>
+
+    <div id="loader"></div>
+
+    <div class="modal-container modal-container2" id="success">
+        <div class="modal-content">
+        <div>
+          <h2>Your Pan is verified Successfully.!</h2>
+        </div>
+        <!-- <a href="">Proceed to next step >></a> -->
+        </div>
+        <div class="modal-background"></div>
+      </div>
+
+    <!-- <div id="success" style="display: none;">
+        Your Pan is verified Successfully.
+    </div> -->
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+     <script>
+
+var spinner = $('#loader');
+
+const openBtn = document.querySelector('.open-btn');
+const popup = document.querySelector('.modal-container');
+const successPopup = document.querySelector('.modal-container2');
+const successBtn = document.querySelector('.success-btn');
+const closeBtn = document.querySelector('.close-btn');
+const myCheckbox = document.querySelector('.continue-checkbox');
+const continueButton = document.querySelector('.submit');
+const panNumber = document.querySelector('.pan-number');
+const error = document.querySelector('.error');
+
+openBtn.addEventListener('click', () => {
+    // if(panNumber.value!==""){    
+    //     popup.classList.add('open');
+    // }
+});
+closeBtn.addEventListener('click', () => {
+    console.log("hellosnxjuincs");
+  popup.classList.remove('open');
+});
+successBtn.addEventListener('click', () => {
+    console.log("hellosnxjuincs");
+  popup.classList.remove('open');
+  successPopup.classList.add("open");
+});
+panNumber.addEventListener("keyup", function() {
+if(panNumber.value!==""){
+    error.classList.remove("open");  
+    continueButton.removeAttribute("disabled");
+ }else{
+    error.classList.add("open");
+    continueButton.setAttribute("disabled",true);
+
+  }
+});
+
+      var data_pan=null;
+        $(document).ready(function(){
+
+          $('#bd_email').select2();
+            
+            $('#no').on('click',function(){
+                $('#pan_value').val('');
+                $('#submit_pan').show();
+                $('#show_question').hide();
+            })
+
+            $('#yes').on('click',function(){
+                spinner.show();
+                data_pan[0]['bd_email']=$('#bd_email').val();
+                $.ajax({
+                    headers:{
+                    "Authorization":"Token {{token}}",
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': '{{ csrf_token }}'
+                    },
+                    url:"{% url 'pancreate' %}",
+                    type:"post",
+                    data:JSON.stringify(data_pan),
+                    dataType: 'json',
+                    contentType: "application/json; charset=utf-8",
+                    success:function(data){
+                       spinner.hide();
+                        
+                        $('#success').show();
+                        $('#submit_pan').hide();
+                        $('#show_question').hide();
+                        var delayInMilliseconds = 3000; //3 second
+
+                        setTimeout(function() {
+                          //your code to be executed after 3 second
+                          window.callbackHandler.postMessage("true")
+                        }, delayInMilliseconds);
+                       
+                    },error:function(data){
+                spinner.hide();
+
+                    }
+
+                })
+            })
+
+            $('#submit_pan').on('submit',function(e){
+                e.preventDefault()
+                data= $(this).serialize();
+                spinner.show();
+
+                $.ajax({
+                    headers:{
+                    "Authorization":"Token {{token}}",
+                    'X-CSRFToken': '{{ csrf_token }}'
+
+                    },
+                    type:"post",
+                    url:"{% url 'panverify' %}",
+                    data:data,
+                    success:function(data){
+                        spinner.hide();
+
+                        data= data.data;
+                        if(data.error){
+                            $('#error').html(data.error.message)
+                        }else{
+                            $('#error').html("")
+                        }
+                        if(data[0].response){
+                            data_pan=data
+                            name= data[0].response.result.name;
+                            fatherName= data[0].response.result.fatherName;
+                            dob= data[0].response.result.dob;
+                            number= data[0].response.result.number;
+                            data.verification_id= {{verification_id}};
+                            $('#show_pan_data').html(`${name}`)
+                            $('#show_pan_number').html(`${number}`)
+                            
+                            $('#error').html("");
+                            $('#submit_pan').hide();
+                            $('#show_question').show();
+                        }else{
+                          if(data[0].error){
+                            $('#error').html(data[0].error.message);
+                          }else{
+                            $('#error').html("Pan not found");
+                          }
+                         
+                         
+                          $('#submit_pan').show();
+                            $('#show_question').hide();
+                        }
+                    }, 
+                    error : function(data){
+                spinner.hide();
+
+                      $('#error').html("Pan not found");
+                         
+                         $('#submit_pan').show();
+                           $('#show_question').hide();
+                    }
+                   
+
+                })
+            })
+        });
+    </script>
+</body>
+</html>

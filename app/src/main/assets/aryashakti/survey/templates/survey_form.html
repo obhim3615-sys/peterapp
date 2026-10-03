@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aryashakti Survey</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" /> 
+    
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+        
+        header {
+            padding: 12px 0;
+            background-color: #1beb2d;
+            text-align: center;
+            color: #fff;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        select,
+        input[type="date"] {
+            width: 100%;
+            height: 40px;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .btn-submit {
+            background-color: #1beb2d;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .btn-submit:disabled {
+            background-color: #b6b6b6;
+            cursor: not-allowed;
+        }
+
+        .error-msg {
+            color: red;
+            font-size: 12px;
+            margin-top: 6px;
+            display: none;
+        }
+        .modal-container {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    /* display: flex; */
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .modal-content {
+    position: absolute;
+    z-index: 2;
+    background-color: #fff;
+    width: 100%;
+    bottom: 0;
+    height: 40%;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+    padding-top: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .modal-content h2{
+    margin-left: 24px;
+    font-size: 28px;
+    color: #575757;
+  }
+  .us-btns{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 16px;
+  }
+  .us-btns button{
+    width: 46%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 8px;
+    border: none;
+    color: #fff;
+    font-size: 16px;
+  }
+  .us-btns button:first-child{
+    margin-left: 3%;
+    background-color: rgb(255, 179, 37);
+  }
+  .us-btns button:last-child{
+    margin-right: 3%;
+    background-color: rgb(27, 237, 45);
+  }
+  .modal-background {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+  }
+  
+  /* .modal-container.hide {
+    display: none;
+  } */
+
+  .open{
+    display: flex !important;
+  }
+
+  .red{
+    color: red;
+    font-size: 12px;
+    margin-top: 6px;
+  }
+  .error{
+    display: none;
+  }
+
+  .modal-container2 .modal-content{
+    align-items: center;
+  }
+  .modal-container2 .modal-content div h2{
+    margin-top: 60px;
+    color: green !important;
+  }
+
+  .modal-container2 .modal-content a{
+    margin-bottom: 40px;
+    color: rgb(0, 129, 198);
+  }
+
+  #error{
+    color: red;
+  }
+  #loader {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  background: rgba(0,0,0,0.75) url(https://media.tenor.com/On7kvXhzml4AAAAj/loading-gif.gif) no-repeat center center;
+  z-index: 10000;
+}
+.userCard{
+  padding: 12px 8px 12px 8px;
+    background: #f8f8f8;
+    position: relative;
+}
+.crossIconCSS{
+  height: 24px;
+    width: 24px;
+    border-radius: 50%;
+    background: white;
+    color: #f00000;
+    position: absolute;
+    right: -5px;
+    top: -5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.08);
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <h2>Complete the Survey ({{ survey.name }})</h2>
+    </header>
+    <div class="container">
+        {% if survey %}
+        {% if token %}
+        <form id="submit_survey" method="post" action="/api/v1/survey/create-survey-web" enctype="multipart/form-data">
+            <input type="hidden" name="survey_id" value="{{survey.id}}"/>
+            <input type="hidden" name="latitude" value="{{latitude}}"/>
+            <input type="hidden" name="longitude" value="{{longitude}}"/>
+            <div>
+                <div class="error-msg" id="error"></div>
+                {% for i in survey_fields %}
+                <div class="form-group">
+                    {% if i.type != "file" %}
+                    <input type="hidden" name="keys[]" value="{{ i.question }}">
+                    {% else %}
+                    <input type="hidden" name="keyfile[]" value="{{ i.question }}">
+
+                    {% endif %}
+
+
+                    <label for="{{ i.id }}">Enter {{ i.question }}</label>
+                    {% if i.type == "string" %}
+                    <input required type="text" id="{{ i.id }}" name="values[]" placeholder="Enter {{ i.name }}">
+                    {% elif i.type == "int" %}
+                    <input required type="number" id="{{ i.id }}" name="values[]" placeholder="Enter {{ i.name }}">
+                    {% elif i.type == "file" %}
+                    <input required type="file" id="{{ i.id }}" name="{{i.id}}" placeholder="Enter {{ i.name }}">
+                    {% elif i.type == "optional" %}
+                    <select id="{{ i.id }}" name="values[]">
+                        {% for x in i.field_possible_value_split %}
+                        <option>{{ x }}</option>
+                        {% endfor %}
+                    </select>
+                    {% elif i.type == "date" %}
+                    <input required type="date" id="{{ i.id }}" name="values[]" placeholder="Enter {{ i.name }}">
+                    {% endif %}
+                    <div class="error-msg" id="error_{{ i.id }}"></div>
+                </div>
+                {% empty %}
+                <h4 style="text-align: center; padding: 30px;"> Survey is not active.</h4>        
+                {% endfor %}
+            </div>
+            <div>
+                <button class="btn-submit" id="submit-btn" disabled>CONTINUE</button>
+            </div>
+        </form>
+        {% else %}
+        <h4 style="text-align: center; padding: 30px;"> Token is expired or does not exist.</h4>  
+        {% endif %}
+        {% else %}
+        <h4 style="text-align: center; padding: 30px;"> Survey is no longer available.</h4>  
+        {% endif %}
+    </div>
+
+
+
+    <div id="loader"></div>
+
+    <div class="modal-container modal-container2" id="success">
+        <div class="modal-content">
+        <div>
+          <h2>Survey added!</h2>
+        </div>
+        </div>
+        <div class="modal-background"></div>
+      </div>
+
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+           
+
+            $('#submit_survey').on('submit', function(e) {
+                e.preventDefault();
+                var form = $(this);
+                var formData = new FormData(form[0]); // Create a FormData object from the form
+
+                var url = form.attr('action');
+                $('#loader').show();
+
+                $.ajax({
+                    headers: {
+                        "Authorization": "Token {{ token }}",
+                    },
+                    type: "post",
+                    url: url,
+                    data: formData, // Use the FormData object here
+                    processData: false, // Prevent jQuery from processing the data
+                    contentType: false, // Prevent jQuery from setting the content type
+                    success: function(data) {
+                        $('#loader').hide();
+                        console.log(data);
+                        if (data.status) {
+                            $('#submit_survey').hide();
+                            $('#success').show();
+                            $('#error').hide();
+
+                            var delayInMilliseconds = 3000; //3 second
+
+                            setTimeout(function() {
+                              //your code to be executed after 3 second
+                              window.callbackHandler.postMessage("true")
+                            }, delayInMilliseconds);
+                            // Redirect to a success page or show a success message
+                        } else {
+                            $('#error').html(data.message);
+                            $('#error').show();
+                            $('#success').hide();
+                            // Show an error message or handle errors
+                        }
+                    },
+                    error: function(data) {
+                        $('#loader').hide();
+                        $('#success').hide();
+                        $('#error').html("Pan not found");
+                        $('#error').show();
+                    },
+                    complete: function() {
+                        $('#loader').hide();
+                    }
+                });
+            });
+
+            $('#submit_survey input, #submit_survey select').on('change input', function() {
+                var isFormValid = true;
+                $('#submit_survey input[required], #submit_survey select[required]').each(function() {
+                    if ($(this).val() === '') {
+                        isFormValid = false;
+                        var errorMsgId = '#error_' + $(this).attr('id');
+                        $(errorMsgId).text('This field is required.').show();
+                    } else {
+                        var errorMsgId = '#error_' + $(this).attr('id');
+                        $(errorMsgId).hide();
+                    }
+                });
+                $('#submit-btn').prop('disabled', !isFormValid);
+            });
+
+           
+
+            // Check required fields on page load
+            $('#submit_survey input[required], #submit_survey select[required]').trigger('input');
+        });
+    </script>
+</body>
+</html>

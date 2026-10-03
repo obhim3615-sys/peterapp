@@ -1,0 +1,1175 @@
+{
+	"info": {
+		"_postman_id": "d94ed5d2-5c61-425b-9412-73b5eec50d17",
+		"name": "Api collections4",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "crop_list_org",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/crop_list_org/?org_id=41&secret-key={{api_secret_key}}",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"crop_list_org",
+						""
+					],
+					"query": [
+						{
+							"key": "org_id",
+							"value": "41"
+						},
+						{
+							"key": "secret-key",
+							"value": "{{api_secret_key}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "farm_list",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/api/farm_list/?user_id=1&secret-key={{api_secret_key}}",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"farm_list",
+						""
+					],
+					"query": [
+						{
+							"key": "user_id",
+							"value": "1"
+						},
+						{
+							"key": "secret-key",
+							"value": "{{api_secret_key}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "product_list",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/product_list/?page_number=1&secret-key={{api_secret_key}}",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"product_list",
+						""
+					],
+					"query": [
+						{
+							"key": "page_number",
+							"value": "1"
+						},
+						{
+							"key": "secret-key",
+							"value": "{{api_secret_key}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete_address",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/delete_address/?address_id=1&secret-key={{api_secret_key}}",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"delete_address",
+						""
+					],
+					"query": [
+						{
+							"key": "address_id",
+							"value": "1"
+						},
+						{
+							"key": "secret-key",
+							"value": "{{api_secret_key}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addagent",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "\r\n{\r\n    \"user_id\":\"3654\",\r\n    \"approved\":\"True\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/api/addagent/",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"addagent",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "otp-login/<phone>",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/api/otp-login/+919652988620",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"otp-login",
+						"+919652988620"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "otp-verify/<phone>/<otp>",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/otp-verify/+919652988620/576616",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"otp-verify",
+						"+919652988620",
+						"576616"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "nearby_partner",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/nearby_partner/",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"nearby_partner",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "product_list_by_second_filter",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/product_list_by_secondfilter/?&secret-key={{api_secret_key}}",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"product_list_by_secondfilter",
+						""
+					],
+					"query": [
+						{
+							"key": null,
+							"value": null
+						},
+						{
+							"key": "secret-key",
+							"value": "{{api_secret_key}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "imageupload",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/imageupload/",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"imageupload",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "pagination_farm_list",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/pagination_farm_list/?user_id=13561&secret-key={{api_secret_key}}",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"pagination_farm_list",
+						""
+					],
+					"query": [
+						{
+							"key": "user_id",
+							"value": "13561"
+						},
+						{
+							"key": "secret-key",
+							"value": "{{api_secret_key}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "pagination_social_list_with_likes",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/pagination_social_list_with_likes/?page_number=1&secret-key={{api_secret_key}}",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"pagination_social_list_with_likes",
+						""
+					],
+					"query": [
+						{
+							"key": "page_number",
+							"value": "1"
+						},
+						{
+							"key": "secret-key",
+							"value": "{{api_secret_key}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update_activity",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/update_activity/?activity_id=56&secret-key={{api_secret_key}}",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"update_activity",
+						""
+					],
+					"query": [
+						{
+							"key": "activity_id",
+							"value": "56"
+						},
+						{
+							"key": "secret-key",
+							"value": "{{api_secret_key}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "imageuploader",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "",
+							"value": "",
+							"type": "default"
+						}
+					],
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/api/imageuploader/",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"imageuploader",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "location_list",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/location_list/?user_id1=1&secret-key={{api_secret_key}}",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"location_list",
+						""
+					],
+					"query": [
+						{
+							"key": "user_id1",
+							"value": "1"
+						},
+						{
+							"key": "secret-key",
+							"value": "{{api_secret_key}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AddOfferInquiry",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/api/addofferinquiry/?=",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"addofferinquiry",
+						""
+					],
+					"query": [
+						{
+							"key": "",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "order_list_agent",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/order_list_agent/",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"order_list_agent",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "order_details",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/order_details/",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"order_details",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "hashtag_list",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/hashtag_list/",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"hashtag_list",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "social_list",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/social_list/",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"social_list",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user_block_list",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/user_block_list/",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"user_block_list",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "social_list_by_user",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/social_list_by_user/",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"social_list_by_user",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "agents_summary",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.aryashakti.com/api/agents_summary",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"agents_summary"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "agents_registration",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/agents_registration/",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"agents_registration",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "agent_summary_filter",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/agent_summary_filter/",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"agent_summary_filter",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "order_detail_by_id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/order_detail_by_id",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"order_detail_by_id"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "brand_filter_list",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/brand_filter_list/",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"brand_filter_list",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "brand_filter",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/brand_filter/",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"brand_filter",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "product_by_brand_id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/product_by_brand_id/",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"product_by_brand_id",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updateaddress",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/updateaddress/",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"updateaddress",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delivered_order",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/delivered_order/",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"delivered_order",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delivered_order_for_agent",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/delivered_order_for_agent",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"delivered_order_for_agent"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "productListApiUrlPage",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/productListApiUrlPage/",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"productListApiUrlPage",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "social_list_with_like",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/social_list_with_like/",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"social_list_with_like",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "crop_list_filter",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/crop_list_filter/",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"crop_list_filter",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get_machine_list",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/get_machine_list/",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"get_machine_list",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "product_with_varient",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/product_with_varient/",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"product_with_varient",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "valid_coupons",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/valid_coupons/",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"valid_coupons",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "coupon_details",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/coupon_details/?user_id=1/",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"coupon_details",
+						""
+					],
+					"query": [
+						{
+							"key": "user_id",
+							"value": "1/"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "pagination_activity_master",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/pagination_activity_master/",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"pagination_activity_master",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "pagination_sellcrop_list",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/pagination_sellcrop_list/",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"pagination_sellcrop_list",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "pagination_crop_list",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/pagination_crop_list/",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"pagination_crop_list",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "pagination_variety_list",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/pagination_variety_list/",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"pagination_variety_list",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "pagination_product_list",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/pagination_product_list/",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"pagination_product_list",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "pagination_popular_product_list",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/pagination_popular_product_list/",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"pagination_popular_product_list",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "pagination_product_variant_list",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/pagination_product_variant_list/",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"pagination_product_variant_list",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "pagination_address_list",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/pagination_address_list/",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"pagination_address_list",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "pagination_carousel_list",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/pagination_carousel_list/",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"pagination_carousel_list",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update_profilepicture",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/update_profilepicture/",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"update_profilepicture",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "send_push_notification",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/send_push_notification/",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"send_push_notification",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "group_sms",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/group_sms/",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"group_sms",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "state_list",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/state_list/",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"state_list",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "app_configuration",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/app_configuration/",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"app_configuration",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

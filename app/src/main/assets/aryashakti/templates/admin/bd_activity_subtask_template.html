@@ -1,0 +1,44 @@
+{% extends 'admin/base_site.html' %}
+
+{% block content %}
+
+<div class="module">
+    <div class=" module_table">
+    
+    
+    <div class="results" id="changelist">    
+  
+        <table id="result_list" width="100%" >
+            <thead>
+            <tr>
+                <th scope="col" class="sortable column-id">
+                    <div class="text"><a href="#">id</a></div>
+                    <div class="clear"></div>
+                 </th>          
+          
+                <th scope="col" class="sortable column-id">
+                    <div class="text"><a href="#">Name</a></div>
+                    <div class="clear"></div>
+                 </th>
+                 <th scope="col" class="sortable column-id">
+                    <div class="text"><a href="#">Action</div>
+                    <div class="clear"></div>
+                 </th>
+            </tr>
+            </thead>
+            <tbody>
+            
+                {% for i in templates %}
+                <tr class="selected">
+                <td class="field-org_name">{{i.id }}</td>
+                <td class="field-logo">{{i.name}}</td>
+                <td><a href="/admin/bd-subtask-show/{{i.id}}"><button>View</button></a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+            </table>
+        </div>
+    </div>
+    </div>
+    
+{% endblock %}

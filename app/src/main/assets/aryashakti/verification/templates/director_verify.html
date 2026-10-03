@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Director Details</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" /> 
+    <style>
+        *{
+    margin: 0;
+    padding: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+p{
+  margin-top: 10px ;
+  margin-left: 10px ;
+  color:#000;
+  font-size: 18px;
+}
+html,body{
+    width: 100%;
+    height: 100%;
+}
+
+header{
+    width: 100%;
+    padding: 12px 0px;
+    display: flex;
+    align-items: center;
+    background-color: #127960;
+    color: #fff;
+    line-height: 24px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+header h2{
+    font-weight: 400;
+}
+.input-body-div{
+    padding-top: 16px;
+    padding-left: 16px;
+    padding-right: 16px;
+    height: 85%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.input-body-div input[type="text"],.input-body-div input[type="date"] {
+    width: 100%;
+    height: 40px;
+    border-radius: 4px;
+    border: 1px solid #b6b6b6;
+    padding-left: 16px;
+    margin-top: 0px;
+}
+.input-body-div label{
+    display: flex;
+    align-items: center;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+.input-body-div label p{
+    width: 100%;
+    line-height: 18px;
+}
+.input-body-div label input[type="checkbox"] {
+    width: 25px;
+    height: 25px;
+    border-radius: 4px;
+    margin-right: 12px;
+    border: 1px solid #b6b6b6;
+}
+.input-body-div .submit{
+    width: 100%;
+    border-radius: 8px;
+    border: none;
+    padding: 16px 0px;
+    background-color: #127960;;
+    color: #fff;
+    font-size: 16px;
+    margin-top: 20px;
+}
+.input-body-div .submit:disabled{
+    background-color: #b6b6b6;
+}
+.modal-container {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    /* display: flex; */
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .modal-content {
+    position: absolute;
+    z-index: 2;
+    background-color: #fff;
+    width: 100%;
+    bottom: 0;
+    height: 40%;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+    padding-top: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .modal-content h2{
+    margin-left: 24px;
+    font-size: 28px;
+    color: #575757;
+  }
+  .us-btns{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 16px;
+  }
+  .us-btns button{
+    width: 46%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 8px;
+    border: none;
+    color: #fff;
+    font-size: 16px;
+  }
+  .us-btns button:first-child{
+    margin-left: 3%;
+    background-color: rgb(255, 179, 37);
+  }
+  .us-btns button:last-child{
+    margin-right: 3%;
+    background-color: #127960;;
+  }
+  .modal-background {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+  }
+  
+  /* .modal-container.hide {
+    display: none;
+  } */
+
+  .open{
+    display: flex !important;
+  }
+
+  .red{
+    color: red;
+    font-size: 12px;
+    margin-top: 6px;
+  }
+  .error{
+    display: none;
+  }
+
+  .modal-container2 .modal-content{
+    align-items: center;
+  }
+  .modal-container2 .modal-content div h2{
+    margin-top: 60px;
+    color: green !important;
+  }
+
+  .modal-container2 .modal-content a{
+    margin-bottom: 40px;
+    color: rgb(0, 129, 198);
+  }
+
+  #error{
+    color: red;
+    font-weight: bold;
+    font-size: 20px;
+  }
+  #loader {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  background: rgba(0,0,0,0.75) url(https://media.tenor.com/On7kvXhzml4AAAAj/loading-gif.gif) no-repeat center center;
+  z-index: 10000;
+}
+.userCard{
+  margin-top :10px ;
+  border:1px solid #000;
+  padding: 12px 8px 12px 8px;
+    background: #f8f8f8;
+    position: relative;
+}
+.crossIconCSS{
+  height: 24px;
+    width: 24px;
+    border-radius: 50%;
+    background: white;
+    color: #f00000;
+    position: absolute;
+    right: -5px;
+    top: -5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.08);
+}
+
+table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+  }
+  th, td {
+      padding: 10px;
+      border: 1px solid #e0e0e0;
+      text-align: left;
+  }
+
+  
+  
+    </style>
+</head>
+<body>
+  
+    <!-- <header>
+       <h2 style="padding-left: 20px;">Arya Mitra</h2> 
+    </header> -->
+    <div class="input-body-div">
+      {% if not pan_data %}
+      <h4 style="text-align: center; padding: 30px;">Please Verify your Pan first.</h4>  
+        
+
+      {% elif token %}
+        <form id="submit_adhar" method="post" action="/api/v1/verify/director-verify/">
+            <input type="hidden" value="{{user_id}}" name="user_id" />
+            <input type="hidden" value="{{cibil}}" name="cibil" />
+          <div>
+              <div id="error">
+
+              </div>
+                <h3>Provide PAN for guarantor directors.</h3>
+                <p>We need this to analyze the financial eligibility of your organization.</p>
+                <div  id="add-data">
+                {% for i in directors %}
+                <input type="hidden" value="{{i.id}}" name="ids"/>
+                  <div class="userCard" id="count-{{ forloop.counter }}">
+                    <!-- <div class="crossIconCSS"><label onclick="deleteDirector('{{ forloop.counter }}','{{i.id}}',1)">X</label></div> -->
+                    
+                    <p>Enter PAN</p>
+
+                    <input required type="text" onchange="enableSubmit()" name="director_pan" autocomplete="false" class="pan-number pan-value" placeholder="Enter director PAN number"   value="{% if i.director_pan %}{{i.director_pan}}{% endif %}"/> 
+
+                    <p>Enter Mobile Number</p>
+
+                    <input required type="text" onchange="enableSubmit()" id="pan_value" name="mobile_number" autocomplete="false"  class="pan-number pan-value" value="{{i.mobile_number}}" placeholder="Enter mobile number">
+                    <p>Enter Pincode</p>                    
+                    <input required type="text" onchange="enableSubmit()" id="pincode" name="pincode" autocomplete="false"  class="pan-number pan-value" value="{{i.pincode}}" placeholder="Enter Pincode">
+                  </div>
+                {% empty %}
+                <div class="userCard" id="count-0" >
+                  <!-- <div class="crossIconCSS" ><label  onclick="deleteDirector(0,0,0)">X</label></div> -->
+                 <label>Director 1</label>
+                  <p>Enter Pan Number</p>                    
+
+                    <input required type="text"  onchange="enableSubmit()" name="director_pan" autocomplete="false" class="pan-number pan-value" placeholder="Enter director PAN number"   /> 
+                 
+                  <p>Enter Mobile Number</p>                    
+
+                  <input required type="text" onchange="enableSubmit()"  id="pan_value" name="mobile_number" autocomplete="false"  class="pan-number pan-value"  placeholder="Enter mobile number">
+                  
+                  <p>Enter Pincode</p>                    
+                  <input required type="text" onchange="enableSubmit()" id="pincode" name="pincode" autocomplete="false"  class="pan-number pan-value" value="{{i.pincode}}" placeholder="Enter Pincode">
+                  
+                </div>
+                <div class="userCard" id="count-1" >
+                  <!-- <div class="crossIconCSS" ><label  onclick="deleteDirector(0,0,0)">X</label></div> -->
+                  <label>Director 2</label>
+                 
+                  <p>Enter Pan Number</p>                    
+
+                    <input required type="text"  onchange="enableSubmit()" name="director_pan" autocomplete="false" class="pan-number pan-value" placeholder="Enter director PAN number"   /> 
+                 
+                  <p>Enter Mobile Number</p>                    
+
+                  <input required type="text" onchange="enableSubmit()"  id="pan_value" name="mobile_number" autocomplete="false"  class="pan-number pan-value"  placeholder="Enter mobile number">
+                  
+                  <p>Enter Pincode</p>                    
+                  <input required type="text" onchange="enableSubmit()" id="pincode" name="pincode" autocomplete="false"  class="pan-number pan-value" value="{{i.pincode}}" placeholder="Enter Pincode">
+                  
+                </div>
+                {% endfor %}                
+                  
+                </div>
+                <!-- <button id="add_director" type="button" class="submit add-btn" >Add Directors</button> -->
+            </div>
+           
+            <div style=" background-color: #fff;width: 100%; padding: 16px;right: 0px;">
+              <label><input type="checkbox" class="pan-number" required/><p style="font-weight: normal;">I agree to let Arya Dhan fetch my company details, CIBIL scores of my company and directors.</p></label>
+                <label>
+                  
+                <button class="submit open-btn" disabled>CONTINUE</button>
+                </label>
+            </div>         
+        </form>
+      {% else %}
+      <h4 style="text-align: center; padding: 30px;"> Token is expired or does not exist.</h4>  
+      {% endif %}
+    </div>
+
+
+  
+
+    <div id="loader"></div>
+
+    <div class="modal-container modal-container2" id="success">
+        <div class="modal-content">
+        <div>
+          <h2>{{message}}</h2>
+        </div>
+        <!-- <a href="">Proceed to next step >></a> -->
+        </div>
+        <div class="modal-background"></div>
+      </div>
+
+      <div class="modal-container" id="show_question" style="display:none">
+      
+        <div class="modal-content">
+          <div class="container">
+              <h3>Is the directors detail are correct? </h3>
+              <div >
+                <table >
+                  <thead>
+                    <th>Name</th>
+                    <th>PAN</th>
+                  </thead>
+                  <tbody id="name_data">
+
+                  </tbody>
+
+                </table>
+              </div>
+             
+            </div>
+            <div class="us-btns">
+                <button id="no" class="close-btn">No it's not us</button>
+              <button id="yes" class="success-btn">Yes it's OK</button>
+            </div>
+            </div>
+            <div class="modal-background"></div>
+         
+        <!-- Is this you ?
+        <button id="yes">Yes</button>
+        <button id="no">No</button>
+        <div id="show_pan_data"></div> -->
+    </div>
+
+
+
+   
+
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+     <script>
+var spinner = $('#loader');
+
+
+function deleteDirector(obj,id, type=1){
+
+  if(type!=0){
+    spinner.show();
+    $.ajax(
+    {
+      url:"{% url 'deletedirector' %}",
+      type:"post",
+      headers:{
+            "Authorization":"Token {{token}}",
+            },
+      data:{id:id},
+      success:function(){
+        spinner.hide();
+        $('#count-'+obj).remove()
+        enableSubmit();
+
+      },error:function(data){
+        spinner.hide();
+      }
+    }
+  )
+  }else{
+    console.log("#"+obj)
+    $('#count-'+obj).remove()
+  }
+
+ 
+ 
+}
+
+
+function enableSubmit(){
+  let check=0
+          $('.pan-value').each(function(i,val){
+            if($(val).val()=="" && $(val).attr('name')!="email"){
+              check++;
+            }
+          })
+         
+          if(check==0){
+            $('.open-btn').removeAttr('disabled')
+        }else{
+          $('.open-btn').attr('disabled',true)
+        }
+}
+
+var data_pan=null;
+      $(document).ready(function(){
+        enableSubmit()
+
+        $('#no').on('click',function(){
+                $('#pan_value').val('');
+                $('#submit_pan').show();
+                $('#show_question').hide();
+            })
+          
+            $('#yes').on('click',function(){
+              spinner.show();
+              director_pan= $('input[name="director_pan"]').map(function() {
+                  return $(this).val();
+              }).get();
+              pan_data= $('input[name="pan_data"]').map(function() {
+                  return $(this).val();
+              }).get();
+
+              address= $('input[name="address"]').map(function() {
+                  return $(this).val();
+              }).get();
+
+              pincode= $('input[name="pincode"]').map(function() {
+                  return $(this).val();
+              }).get();
+
+              state= $('input[name="state"]').map(function() {
+                  return $(this).val();
+              }).get();
+
+              ids= $('input[name="ids"]').map(function() {
+                  return $(this).val();
+              }).get();
+
+              mobile_number= $('input[name="mobile_number"]').map(function() {
+                  return $(this).val();
+              }).get();
+
+
+              form_data= {
+                "director_pan":director_pan,
+                "pan_data":pan_data,
+                "address":address,
+                "pincode":pincode,
+                "state":state,
+                "ids":ids,
+                "pan_data":data_pan,
+                "mobile_number":mobile_number,
+                "user_id":"{{user_id}}"
+              }
+               $.ajax(
+                  {
+                    url:"{% url 'directorverify' %}",
+                    type:"post",
+                    headers:{
+                          "Authorization":"Token {{token}}",
+                          'X-CSRFToken': '{{ csrf_token }}'
+                          },
+                    data:JSON.stringify(form_data),
+                    dataType: 'json',
+                    contentType: "application/json; charset=utf-8",
+                    success:function(data){
+                      spinner.hide();
+                      console.log(data);
+
+                      if(data.status){
+                        $('#show_question').hide();
+                        $('#submit_pan').hide();
+
+
+                        $('#success').show();
+                        var delayInMilliseconds = 3000; //3 second
+
+                        setTimeout(function() {
+                          //your code to be executed after 3 second
+                          window.callbackHandler.postMessage("true")
+                        }, delayInMilliseconds);
+                      }
+                      
+                    }, error: function(){
+                      spinner.hide();
+                    }
+
+                  }
+                );
+            });
+
+        $('.pan-value').on('change keydown',function(){
+         enableSubmit();
+        })     
+        
+        
+        $('#submit_adhar').on('submit',function(e){
+          e.preventDefault()
+          var valuesArray = $('input[name="director_pan"]').map(function() {
+              return $(this).val();
+          }).get();
+          spinner.show();
+
+          $.ajax({
+                    headers:{
+                    "Authorization":"Token {{token}}",
+                    'X-CSRFToken': '{{ csrf_token }}'
+                    },
+                    type:"post",
+                    url:"{% url 'panverify' %}",
+                    data:{pan_number:valuesArray,type_pan:"individualPan"},
+                    traditional: true, 
+                    success:function(data){
+                    spinner.hide();
+
+                        data= data.data;
+                        if(data.error){
+                            $('#error').html(data.error.message)
+                        }else{
+                            $('#error').html("")
+                        }
+                        if(data){
+                          data_pan=data
+                          result_data="";
+                          error=0;
+                          $('#error').html("");
+                            for(i=0; i<data.length;i++){
+                              if(data[i].response){
+                                name= data[i].response.result.name;
+                                fatherName= data[i].response.result.fatherName;
+                                dob= data[i].response.result.dob;
+                                number= data[i].response.result.number;
+                                result_data+=`
+                                <tr><td>${name}</td>
+                                  <td>${number}</td></tr>
+                              `;
+                            }else{
+                              error=1
+                                  if(data[i].error){
+                                    $('#error').append("<div>"+parseInt(i+1)+"-"+data[i].error.message+"<br>");
+                                  }else{
+                                    $('#error').append("Pan not found");
+                                  }
+                                break;
+                         
+                              }
+                            }
+
+                            
+
+                           
+
+                          if(error==0){
+
+                            $('#name_data').html(result_data);
+                           
+                          
+                            $('#error').html("");
+                            $('#submit_pan').hide();
+                            $('#show_question').show();
+                          }
+                        }else{
+                          $('#error').html("Pan not found");
+                         
+                          $('#submit_pan').show();
+                            $('#show_question').hide();
+                        }
+                    }, 
+                    error : function(data){
+                spinner.hide();
+
+                      $('#error').html("Pan not found");
+                         
+                         $('#submit_pan').show();
+                           $('#show_question').hide();
+                    }
+                   
+
+                });
+
+          
+         
+        });
+
+
+        $('#add_director').on('click',function(){
+          count= $('.userCard').length;
+          console.log(count);
+          $('#add-data').append(`
+          <div class="userCard"  id="count-${count}">
+            <!---- <div class="crossIconCSS" ><label onclick="deleteDirector('${count}',0,0 )">X</label></div> -->
+                    <p>Enter PAN</p>                    
+                    <input required type="text"  name="director_pan" autocomplete="false" class="pan-number pan-value" placeholder="Enter director PAN number"  /> 
+                    
+                    <p>Enter Mobile Number</p>  
+                    <input required type="text" onchange="enableSubmit()"  id="pan_value" name="mobile_number" autocomplete="false"  class="pan-number pan-value"  placeholder="Enter mobile number">
+                  
+                    <p>Enter Pincode</p>                    
+                    <input required type="text" id="pincode" onchange="enableSubmit()" name="pincode" autocomplete="false"  class="pan-number pan-value"  placeholder="Enter Pincode">
+                    
+                   </div>
+          `)
+          enableSubmit();
+        });
+
+
+      });
+    </script>
+</body>
+</html>

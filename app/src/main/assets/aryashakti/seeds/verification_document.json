@@ -1,0 +1,42 @@
+[
+    {
+        "model": "verification.Document",
+        "pk": 1,
+        "fields": {
+            "name": "Aadhaar",
+            "slug": "Aadhaar",
+            "created_by": 1,
+            "updated_by": 1
+        }
+    },
+    {
+        "model": "verification.Document",
+        "pk": 2,
+        "fields": {
+            "name": "PAN",
+            "slug": "PAN",
+            "created_by": 1,
+            "updated_by": 1
+        }
+    },
+    {
+        "model": "verification.Document",
+        "pk": 3,
+        "fields": {
+            "name": "GST",
+            "slug": "GST",
+            "created_by": 1,
+            "updated_by": 1
+        }
+    },
+    {
+        "model": "verification.Document",
+        "pk": 4,
+        "fields": {
+            "name": "Bank Statement",
+            "slug": "Bank Statement",
+            "created_by": 1,
+            "updated_by": 1
+        }
+    }
+]

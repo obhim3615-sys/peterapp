@@ -1,0 +1,50 @@
+[
+    {
+        "model":"subscription_service.Service",
+        "pk":1,
+        "fields":{
+            "name":"Brodcast SMS",
+            "slug":"brodcast_sms",
+            "type":"fpo",
+            "status":true,
+            "price":100,
+            "unit":"number"
+        }
+    },
+    {
+        "model":"subscription_service.Service",
+        "pk":2,
+        "fields":{
+            "name":"Farmer Map",
+            "slug":"farmer_map",
+            "type":"farmer",
+            "status":true,
+            "price":100,
+            "unit":"days"
+        }
+    },
+    {
+        "model":"subscription_service.Service",
+        "pk":3,
+        "fields":{
+            "name":"Farmer Card",
+            "slug":"farmer_card",
+            "type":"farmer",
+            "status":true,
+            "price":100,
+            "unit":"days"
+        }
+    },
+    {
+        "model":"subscription_service.Service",
+        "pk":4,
+        "fields":{
+            "name":"Live Video Card",
+            "slug":"live_video_call",
+            "type":"fpo",
+            "status":true,
+            "price":100,
+            "unit":"days"
+        }
+    }
+]

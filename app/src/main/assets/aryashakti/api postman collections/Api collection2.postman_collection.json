@@ -1,0 +1,489 @@
+{
+	"info": {
+		"_postman_id": "2c3c9111-25cb-49c1-900c-70e6687041ec",
+		"name": "Api collection2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "pagination_farm_list_admin",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/pagination_farm_list_admin/?page_number=1&secret-key={{api_secret_key}}",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"pagination_farm_list_admin",
+						""
+					],
+					"query": [
+						{
+							"key": "page_number",
+							"value": "1"
+						},
+						{
+							"key": "secret-key",
+							"value": "{{api_secret_key}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "pagination_activity_list",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/pagination_activity_list/?page_number=55&secret-key={{api_secret_key}}",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"pagination_activity_list",
+						""
+					],
+					"query": [
+						{
+							"key": "page_number",
+							"value": "55"
+						},
+						{
+							"key": "secret-key",
+							"value": "{{api_secret_key}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "pagination_offers_list",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/pagination_offers_list/?page_number=1&secret-key={{api_secret_key}}",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"pagination_offers_list",
+						""
+					],
+					"query": [
+						{
+							"key": "page_number",
+							"value": "1"
+						},
+						{
+							"key": "secret-key",
+							"value": "{{api_secret_key}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "pagination_training_list",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/pagination_training_list/?page_number=1&secret-key={{api_secret_key}}",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"pagination_training_list",
+						""
+					],
+					"query": [
+						{
+							"key": "page_number",
+							"value": "1"
+						},
+						{
+							"key": "secret-key",
+							"value": "{{api_secret_key}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "pagination_news_list",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/pagination_news_list/?page_number=1&secret-key={{api_secret_key}}",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"pagination_news_list",
+						""
+					],
+					"query": [
+						{
+							"key": "page_number",
+							"value": "1"
+						},
+						{
+							"key": "secret-key",
+							"value": "{{api_secret_key}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "pagination_hashtag_list",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/pagination_hashtag_list/?page_number=1&secret-key={{api_secret_key}}",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"pagination_hashtag_list",
+						""
+					],
+					"query": [
+						{
+							"key": "page_number",
+							"value": "1"
+						},
+						{
+							"key": "secret-key",
+							"value": "{{api_secret_key}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "pagination_social_list",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/pagination_social_list/?page_number=1&secret-key={{api_secret_key}}",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"pagination_social_list",
+						""
+					],
+					"query": [
+						{
+							"key": "page_number",
+							"value": "1"
+						},
+						{
+							"key": "secret-key",
+							"value": "{{api_secret_key}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "pagination_brand_filter",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/pagination_brand_filter/?page_number=7&secret-key={{api_secret_key}}",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"pagination_brand_filter",
+						""
+					],
+					"query": [
+						{
+							"key": "page_number",
+							"value": "7"
+						},
+						{
+							"key": "secret-key",
+							"value": "{{api_secret_key}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "activity_admin_list",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/activity_admin_list/?org_id=1&secret-key={{api_secret_key}}",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"activity_admin_list",
+						""
+					],
+					"query": [
+						{
+							"key": "org_id",
+							"value": "1"
+						},
+						{
+							"key": "secret-key",
+							"value": "{{api_secret_key}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "activity_list",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/activity_list/?user_id=64&secret-key={{api_secret_key}}",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"activity_list",
+						""
+					],
+					"query": [
+						{
+							"key": "user_id",
+							"value": "64"
+						},
+						{
+							"key": "secret-key",
+							"value": "{{api_secret_key}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addactivity",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"user_id\":64\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/api/addactivity/",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"addactivity",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "activity_master_list",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/activity_master_list/?plot_id=12&secret-key={{api_secret_key}}",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"activity_master_list",
+						""
+					],
+					"query": [
+						{
+							"key": "plot_id",
+							"value": "12"
+						},
+						{
+							"key": "secret-key",
+							"value": "{{api_secret_key}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addactivitymaster",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/addactivitymaster/",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"addactivitymaster",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addinquiry",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"user_id\":545\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/api/addinquiry/",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"addinquiry",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addlivefeed",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"org_id\":1,\r\n    \"started_by_user_id\":515\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/api/addlivefeed/",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"addlivefeed",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update_livefeed",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/update_livefeed/?feed_id=1&secret-key={{api_secret_key}}",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"update_livefeed",
+						""
+					],
+					"query": [
+						{
+							"key": "feed_id",
+							"value": "1"
+						},
+						{
+							"key": "secret-key",
+							"value": "{{api_secret_key}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "livefeedlist",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/livefeedlist/?org_id=4&secret-key={{api_secret_key}}",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"livefeedlist",
+						""
+					],
+					"query": [
+						{
+							"key": "org_id",
+							"value": "4"
+						},
+						{
+							"key": "secret-key",
+							"value": "{{api_secret_key}}"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -1,0 +1,64 @@
+{% extends 'admin/base_site.html' %}
+
+{% block content %}
+    
+    <div class="module">
+<div class=" module_table">
+
+
+<div style="padding:20px 0px ">
+    <form action="" method="GET" enctype="multipart/form-data">
+        <label> Filter Data</label>
+        <input type="date" name="from_date" value="{{request.GET.from_date }}"/>
+        <input type="date" name="to_date" value="{{request.GET.to_date }}"/>
+        <select name="bd_name">
+            <option value="">Select BD</option>
+            {% for i in all_bd %}
+            <option {% if request.GET.bd_name == i.relationship_manager_name %} selected {% endif %}>{{i.relationship_manager_name}}</option>
+            {% endfor %}
+        </select>
+        <button type="submit" class="button">Filter</button>
+        <a href="/admin/bd_dash/"><button type="button" class="button">Clear</button></a>
+        <a href="/admin/export_bd_dash/"><button class="button" type="button">Export</button></a>
+    </form>
+</div>
+<div class="results" id="changelist">
+<table id="result_list" width="100%">
+    <thead>
+    <tr>
+        <th scope="col" class="sortable column-id">
+            <div class="text"><a href="#">Manager Name</a></div>
+            <div class="clear"></div>
+         </th>
+   
+        <th scope="col" class="sortable column-id">
+            <div class="text"><a href="#">Total User Logged In</a></div>
+            <div class="clear"></div>
+         </th>
+  
+        <th scope="col" class="sortable column-id">
+            <div class="text"><a href="#">Total Farm Created</a></div>
+            <div class="clear"></div>
+         </th>
+         <th scope="col" class="sortable column-id">
+            <div class="text"><a href="#">Details</a></div>
+            <div class="clear"></div>
+         </th>
+    </tr>
+    </thead>
+    <tbody>
+    
+        {% for k,i in org_dict.items %}
+        <tr class="selected">
+        <td class="field-org_name">{{k}}</td>
+        <td class="field-logo">{{i.user_count}}</td>
+        <td class="field-logo">{{i.farm_count}}</td>
+        <td class="field-logo"><a href="/admin/bd_dash_details/{{k}}"><button class="button">Details</button></a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+    </table>
+</div>
+</div>
+</div>
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends 'dashboard/dashboard_base.html' %}
+{% block content %}
+    <div class="content">
+        <style>
+           
+            table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+            th, td { padding: 10px; text-align: center; border: 1px solid #ddd; }
+            th { background-color: #4CAF50; color: white; }
+            .green { background-color: #4CAF50; color: white; }
+            .yellow { background-color: #FFEB3B; }
+            .red { background-color: #F44336; color: white; }
+           
+        </style>
+        <table>
+            <thead>
+                <tr>
+                    <th>Farm</th>
+                    {% for activity in activities %}
+                        <th>{{ activity }}</th>
+                    {% endfor %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for farm_data in table_data %}
+                    <tr>
+                        <td>{{ farm_data.farm }}</td>
+                        {% for activity_data in farm_data.activities %}
+                            <td class="{{ activity_data.color }}">
+                                {{ activity_data.activity }}
+                            </td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    
+{% endblock %}

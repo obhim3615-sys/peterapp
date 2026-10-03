@@ -1,0 +1,11 @@
+{% extends "admin/change_list.html" %}
+
+{% block result_list %}
+    {% if farm_page %}
+    <div class="module" style="margin-bottom: 0px;">
+        <h2>Total Farms: {{ total_farms }}</h2>
+        <h2>Total Area: {{ sum_of_area }}</h2>
+    </div>
+    {% endif %}
+    {{ block.super }}
+{% endblock %}

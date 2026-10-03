@@ -1,0 +1,54 @@
+# ====================================================================
+# Peter Mobile Coding Agent - Android & Kotlin (.gitignore)
+# ====================================================================
+
+# --- Gradle Build System & Cache ---
+.gradle/
+build/
+app/build/
+**/build/
+
+# Do NOT ignore Gradle Wrapper JAR
+!gradle/wrapper/gradle-wrapper.jar
+
+# --- Android Studio & JetBrains IDE Files ---
+.idea/
+*.iml
+.idea/modules.xml
+.idea/jarRepositories.xml
+.idea/compiler.xml
+.idea/libraries/
+.idea/caches/
+.idea/assetWizardSettings.xml
+*.ipr
+*.iws
+
+# --- Local Environment & Machine Settings (NEVER commit machine-specific SDK paths) ---
+local.properties
+.cxx/
+captures/
+
+# --- Compiled Android Binaries & Packages ---
+*.apk
+*.ap_
+*.aab
+*.dex
+*.class
+
+# --- Signing Keys & Keystores (CRITICAL: Never commit release keystores) ---
+*.jks
+*.keystore
+signing.properties
+
+# --- Google Services & Secrets (Prevent accidental credential leaks) ---
+google-services.json
+
+# --- Log Files ---
+*.log
+
+# --- OS Specific Files ---
+.DS_Store
+Thumbs.db
+desktop.ini
+ehthumbs.db
+$RECYCLE.BIN/

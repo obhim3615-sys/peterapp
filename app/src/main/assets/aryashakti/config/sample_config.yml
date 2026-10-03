@@ -1,0 +1,115 @@
+SECRET_KEY: secret_key
+ALLOWED_HOSTS: ['127.0.0.1']
+DEBUG: True
+ROOT_URLCONF: 'Project.urls'
+DATABASES:
+  ENGINE: django.contrib.gis.db.backends.postgis
+  NAME: add_database_name
+  USER: add_database_user
+  PASSWORD: add_database_password
+  HOST: localhost
+  PORT: 5432
+PRAKSHEP_DB: 
+  PRAKSHEP_DB_NAME: "******"
+  PRAKSHEP_DB_USER: "************"
+  PRAKSHEP_DB_PASSWORD: "***********"
+  PRAKSHEP_DB_HOST: "***************************"
+  PRAKSHEP_DB_PORT: "**********************"
+LANGUAGE_CODE: en-us
+TIME_ZONE: Asia/Kolkata
+USE_I18N: True
+USE_L10N: True
+USE_TZ: True
+FILE_PATH:
+  STATIC_URL: /static/
+  STATIC_ROOT: static/
+  MEDIA_URL: media/
+  MEDIA_ROOT: media
+API:
+  API_KEY: add_api_key
+  SECRET_KEY: add_api_secret_key
+GCP:
+  GEO_API_KEY: add_google_geo_api_key
+  GOOGLE_TRANSLATE_API_KEY: add_google_translate_api_key
+OTP_VERIFY:
+  OTP_VERIFY_URL: https://2factor.in/API/V1/
+  OTP_VERIFY_TOKEN: xxxxxxxxxxxxxxxxxxxxxxxxxxx
+GOOGLE_APIS:
+  GOOGLE_PUSH_NOTIFICATION_URL: https://fcm.googleapis.com/fcm/send?Authorization=
+  SERVER_TOKEN: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+DISTANCE_VALUE_FOR_POSTGIS : 25
+SIGNZY:
+  BASE_URL: https://preproduction.signzy.tech/api/v2/
+  SIGNZY_EMAIL: ankur.rand@signzy.com
+  CALLBACK_URL: https://arya.ag
+  USERNAME: XXXXXXXXXXXX
+  PASSWORD: xxxxxxxxxxxxxxx
+  ADHAR_DOC_ID: 1
+  PAN_DOC_ID: 2
+  GST_DOC_ID: 3
+  ADHAR_VERIFY_BASE_URL: https://api-preproduction.signzy.app/api/v3/
+  ADHAR_VERIFY_ACCESS_TOKEN: xxxxxxxxxxxxxxxxxxxxxxx
+ONEMONEY:
+  BASE_URL: https://arya-uat.moneyone.in/
+  CLIENT_ID: 2c4435be98725a037b8d9d19a3a02b50cdcb3dcf
+  CLIENT_SECRET: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+  ORGANISATION_ID: arya-fiu-uat
+  APP_IDENTIFIER: com.test.in
+  PRODUCT_ID: TEST2
+  WEBHOOK_SECRET: aryashakti
+  DOCUMENT_ID: 4
+APILAYER_SHORT: 
+  URL: https://api.apilayer.com/short_url/
+  KEY: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+WEATHER_API:
+  URL: https://api.openweathermap.org/data/2.5/
+PRAKSHEP:
+  KEY: "*****"
+SMTP:
+  EMAIL_USE_TLS: True
+  EMAIL_HOST: 'smtp.gmail.com'
+  EMAIL_PORT : 587
+  EMAIL_HOST_USER : '**************'
+  EMAIL_HOST_PASSWORD : '*************'
+  EMAIL_FROM: '**********************'
+  EMAIL_TO: ["vaibhav.gattyani@arya.ag"]
+PAYMENT:
+  WEBHOOK_SECRET: aryashakti
+  API_KEY: rzp_test_TT1DE4HzZ3ZYzk
+  SECRET_KEY: EWQBk1NKoABZ8Nck6OqJOnpw
+IDS:
+  FARMER_USER_ROLE: 4
+  FARMER_WITHOUT_FPO_USER_ROLE: 6
+  BD_USER_ROLE: 6
+  COUNTRY_INDIA: 1
+HUNDRED_MS:
+  SECRET_KEY: "****************"
+  APP_SECRET: "****************"
+  API_URL: https://api.100ms.live/v2/
+RAZORPAYX:
+  API_KEY: rzp_test_1MHelgOQsEMNbf
+  SECRET_KEY: OI0Yk08R1lJPZOk6ODLR7e5f
+  BASE_URL: https://api.razorpay.com/v1/
+  ACCOUNT_NUM: 2323230079932071
+BANK_ACCOUNT:
+  DOCUMENT_ID: 5
+SMS:
+  URL: https://alerts.cbis.in/SMSApi/send
+  USER_ID: "*****"
+  PASSWORD: "*****"
+  SENDER_ID: "*****"
+  API_KEY: "*****"
+ARYA_PROFIN:
+  URL: http://localhost:8000/
+  SECRET_KEY: "*****"
+FIREBASE:
+  DATABASE_URL: "*****"
+  DATABASE_NAME: "*****"
+ARYA_AG:
+  URL: "https://api-uat.arya.ag/api/v2/"
+NOMS:
+  URL: "http://noms-uat.arya.ag"
+  API_CLIENT_ID: "*****"
+  TENANT_ID: "*****"
+CA_LIFE:
+  URL: "http://68.233.113.223/api"

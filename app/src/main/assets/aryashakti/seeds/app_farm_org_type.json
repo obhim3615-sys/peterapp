@@ -1,0 +1,30 @@
+[
+    {
+        "model": "app_farm.OrgType",
+        "pk": 1,
+        "fields": {
+            "name": "Seed Manufacturer"
+        }
+    },
+    {
+        "model": "app_farm.OrgType",
+        "pk": 2,
+        "fields": {
+            "name": "Self Help Group (SHG)"
+        }
+    },
+    {
+        "model": "app_farm.OrgType",
+        "pk": 3,
+        "fields": {
+            "name": "Farmer Producer Organization"
+        }
+    },
+    {
+        "model": "app_farm.OrgType",
+        "pk": 4,
+        "fields": {
+            "name": "Other Organization"
+        }
+    }
+]

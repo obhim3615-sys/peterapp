@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farm CIBIL Report</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+        }
+        
+        .container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            background-color: #fff;
+        }
+        
+        .card h2 {
+            margin-top: 0;
+            background-color: #FFD700;
+            color: #333;
+            padding: 10px;
+            border-radius: 8px 8px 0 0;
+        }
+        
+        .table-container {
+            overflow-x: auto;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+        
+        th {
+            background-color: #FFD700;
+            color: #333;
+        }
+        
+        .value-box {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .value-box .boundary-title {
+            flex: 1;
+            min-width: 150px; /* Adjust as needed */
+            padding: 20px;
+            color: white;
+            font-weight: bold;
+            text-align: center;
+            border-radius: 8px;
+        }
+        
+        .green { background-color: #4CAF50; }
+        .red { background-color: red; }
+        .purple { background-color: #8A2BE2; }
+        .blue { background-color: #4682B4; }
+        .brown { background-color: #A52A2A; }
+        .grey { background-color: #efefef; color:#000; }
+        
+        #map {
+            width: 100%;
+            height: 400px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+        
+        .value-box h3 {
+            color: black;  /* Change the color to black or any other color you prefer */
+            margin: 0 0 10px 0;
+        }
+        
+        .boundary-title {
+            font-size: 12px;
+        }
+
+        .boundary-title div{
+            font-size: 48px;
+            border-radius:10px;
+            padding:30px 20px;
+        }
+        
+        /* Media query for mobile devices */
+        @media (max-width: 768px) {
+            .value-box {
+                flex-direction: column;
+            }
+        }
+        
+    </style>
+
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.12.0/mapbox-gl.js"></script>
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.12.0/mapbox-gl.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <h1>Farm CIBIL Report</h1>
+    <div class="container">
+         <!-- Map Section -->
+         <div class="card">
+            <h2>Farm Map</h2>
+            <div id="map" ></div>
+        </div>
+        <div class="card">
+            <h2>Summary of your report</h2>
+            <div class="table-container">
+                <p>
+                    {{summary}}
+                </p>
+            </div>
+        </div>
+        <div class="card">
+            <h2>Farm Data</h2>
+            <div class="table-container">
+                <table>
+                    <tbody>
+                        <tr>
+                            <td>Farm ID</td>
+                            <td>{{ farm_data.id }}</td>
+                        </tr>
+                        <tr>
+                            <td>Name</td>
+                            <td>{{ farm_data.name }}</td>
+                        </tr>
+                      
+                        <tr>
+                            <td>Stage</td>
+                            <td>{{ farm_data.stage }}</td>
+                        </tr>
+                       
+                        <tr>
+                            <td>Total Area</td>
+                            <td>{{ farm_data.total_area }}</td>
+                        </tr>
+                        <tr>
+                            <td>Area Unit</td>
+                            <td>{{ farm_data.area_unit }}</td>
+                        </tr>
+                        <tr>
+                            <td>Area Unit in Telugu</td>
+                            <td>{{ farm_data.area_unit_telegu }}</td>
+                        </tr>
+                        <tr>
+                            <td>Crop ID</td>
+                            <td>{{ farm_data.crop_id }}</td>
+                        </tr>
+                        <tr>
+                            <td>Crop Variety ID</td>
+                            <td>{{ farm_data.crop_variety_id }}</td>
+                        </tr>
+                        <tr>
+                            <td>Khasra No</td>
+                            <td><a href="{{ farm_data.khasra_no }}">Open link to view file</a></td>
+                        </tr>
+                        <tr>
+                            <td>Sowing Date</td>
+                            <td>{{ farm_data.sowing_date }}</td>
+                        </tr>
+                       
+                      
+                        <tr>
+                            <td>Farmer Contact</td>
+                            <td>{{ farm_data.farmer_contact }}</td>
+                        </tr>
+                       
+                        <tr>
+                            <td>Latitude</td>
+                            <td>{{ farm_data.latitude }}</td>
+                        </tr>
+                        <tr>
+                            <td>Longitude</td>
+                            <td>{{ farm_data.longitude }}</td>
+                        </tr>
+                        <tr>
+                            <td>Farm Country</td>
+                            <td>{{ farm_data.farm_country }}</td>
+                        </tr>
+                        <tr>
+                            <td>Farm State</td>
+                            <td>{{ farm_data.farm_state }}</td>
+                        </tr>
+                       
+                        <tr>
+                            <td>Farm District</td>
+                            <td>{{ farm_data.farm_district }}</td>
+                        </tr>
+                        <tr>
+                            <td>Farm Taluka</td>
+                            <td>{{ farm_data.farm_taluka }}</td>
+                        </tr>
+                        <tr>
+                            <td>Farm Village</td>
+                            <td>{{ farm_data.farm_village }}</td>
+                        </tr>
+                       
+                       
+                        <tr>
+                            <td>Healthy</td>
+                            <td>{{ farm_data.healthy }}</td>
+                        </tr>
+                        <tr>
+                            <td>Stressed</td>
+                            <td>{{ farm_data.stressed }}</td>
+                        </tr>
+                        <tr>
+                            <td>Biotic Stress</td>
+                            <td>{{ farm_data.biotic_stress }}</td>
+                        </tr>
+                        <tr>
+                            <td>Abiotic Stress</td>
+                            <td>{{ farm_data.abiotic_stress }}</td>
+                        </tr>
+                        <tr>
+                            <td>Nutrient Stress</td>
+                            <td>{{ farm_data.nutrient_stress }}</td>
+                        </tr>
+                        <tr>
+                            <td>Moisture</td>
+                            <td>{{ farm_data.moisture }}</td>
+                        </tr>
+                        <tr>
+                            <td>Stress</td>
+                            <td>{{ farm_data.stress }}</td>
+                        </tr>
+                        <tr>
+                            <td>Damaged</td>
+                            <td>{{ farm_data.damaged }}</td>
+                        </tr>
+                      
+                       
+                        <tr>
+                            <td>Type of Farming</td>
+                            <td>{{ farm_data.type_of_farming }}</td>
+                        </tr>
+                       
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>Overall Scores</h2>
+            <div class="value-box">
+                {% comment %} <div class="boundary-title">
+                    <h3>Farm ID</h3>
+                    <div class="green">{{ farm_report.farm_id }}</div>
+                </div> {% endcomment %}
+                <div class="boundary-title">
+                    <h3>Overall Credit Score</h3>
+                    <div class="green">{{ farm_report.overall_credit_score }}</div>
+                </div>
+                <div class="boundary-title">
+                    <h3>Vegetation Score</h3>
+                    <div class="grey">{{ farm_report.vegetation_score }}</div>
+                </div>
+                <div class="boundary-title">
+                    <h3>Yield Score</h3>
+                    <div class="grey">{{ farm_report.yield_score }}</div>
+                </div>
+                <div class="boundary-title">
+                    <h3>Stress Score</h3>
+                    <div class="grey">{{ farm_report.stress_score }}</div>
+                </div>
+                <div class="boundary-title">
+                    <h3>Irrigation Score</h3>
+                    <div class="grey">{{ farm_report.irrigation_score }}</div>
+                </div>
+                <div class="boundary-title">
+                    <h3>Soil Score</h3>
+                    <div class="grey">{{ farm_report.soil_score }}</div>
+                </div>
+                {% comment %} <div class="boundary-title">
+                    <h3>CIBIL Score</h3>
+                    <div class="brown">{{ farm_report.cibil_score }}</div>
+                </div> {% endcomment %}
+                
+            </div>
+        </div>
+        
+        
+        <div class="card">
+            <h2>Season wise yield</h2>
+            <canvas id="barChart"></canvas>
+            <div class="value-box">
+                <!-- Farm Boundary data goes here -->
+            </div>
+        </div>
+
+       
+
+
+        <div class="card">
+            <h2>Seasonal Data</h2>
+        {% for season in farm_report.seasonal_report reversed %}
+            <div class="table-container" style="margin-top:40px;border:.1px solid #e8e8e8">
+                
+                <table>
+                    <tbody>
+                       
+                        <tr>
+                            <th>Season</th>
+                            <th>{{ season.Season }}</th>
+                        </tr>
+                        <tr>
+                            <td>Crop</td>
+                            <td>{{ season.Crop }}</td>
+                        </tr>
+                        <tr>
+                            <td>Acreage</td>
+                            <td>{{ season.Acerage }}</td>
+                        </tr>
+                        <tr>
+                            <td>Sowing Date</td>
+                            <td>{{ season.Sowing }}</td>
+                        </tr>
+                        <tr>
+                            <td>Harvesting Date</td>
+                            <td>{{ season.Harvesting }}</td>
+                        </tr>
+                        <tr>
+                            <td>Yield</td>
+                            <td>{{ season.Yield }}</td>
+                        </tr>
+                        <tr>
+                            <td>Yield Unit</td>
+                            <td>{{ season.YieldUnit }}</td>
+                        </tr>
+                        <tr>
+                            <td>Price (Rs/Kg)</td>
+                            <td>{{ season.PriceRsKg }}</td>
+                        </tr>
+                        <tr>
+                            <td>Production (Kg)</td>
+                            <td>{{ season.ProductionKg }}</td>
+                        </tr>
+                        <tr>
+                            <td>Tentative Income (Rs)</td>
+                            <td>{{ season.TentativeIncomeRs }}</td>
+                        </tr>
+                        <tr>
+                            <td>Farm Name</td>
+                            <td>{{ season.FarmName }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            {% endfor %}
+        </div>
+
+        
+
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var ctx = document.getElementById('barChart').getContext('2d');
+
+            // Sample data, replace with your dynamic data
+            var labels = [];
+            var data = [];
+
+            
+                {% for season in farm_report.seasonal_report %}
+                    labels.push('{{ season.Season }}');
+                    data.push({{ season.Yield }});
+                {% endfor %}
+           
+            var barChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Yield',
+                        data: data,
+                        backgroundColor: 'rgba(0, 0, 0, 0.2)',
+                        borderColor: 'rgba(0, 0, 0, 1)',
+                        borderWidth: 1,
+                        maxBarThickness:10,
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+
+    <script>
+        mapboxgl.accessToken = 'YOUR_MAPBOX_ACCESS_TOKEN';
+
+    const map = new mapboxgl.Map({
+        container: 'map', 
+        style: 'mapbox://styles/mapbox/satellite-v9', 
+        center: [0, 0], 
+        zoom: 2
+    });
+
+    // Add navigation controls to the map.
+    map.addControl(new mapboxgl.NavigationControl());
+
+    // The GeoJSON data provided by the backend
+    const geojsonData = {{geojson_data_json|safe}};
+
+    // Function to extend bounds with given coordinates
+    function extendBounds(bounds, coordinates) {
+        if (Array.isArray(coordinates)) {
+            coordinates.forEach(coord => {
+                if (coord.length === 2 && !isNaN(coord[0]) && !isNaN(coord[1])) {
+                    bounds.extend([coord[0], coord[1]]);
+                } else {
+                    console.error("Invalid coordinate:", coord);
+                }
+            });
+        } else {
+            console.error("Coordinates are not an array:", coordinates);
+        }
+    }
+
+    // Function to add the GeoJSON data as a new source and fit the map to the bounds
+    function addGeojsonDataToMap(geojsonData) {
+        map.addSource('farm_boundary', {
+            type: 'geojson',
+            data: geojsonData
+        });
+
+        // Add a layer to visualize the GeoJSON data
+        map.addLayer({
+            id: 'farm_boundary-layer',
+            type: 'fill',
+            source: 'farm_boundary',
+            paint: {
+                'fill-color': '#00FF00',
+                'fill-opacity': 0.5,
+            },
+        });
+
+        // Calculate bounds and fit the map to the bounds
+        const bounds = new mapboxgl.LngLatBounds();
+
+        if (geojsonData.type === 'FeatureCollection') {
+            geojsonData.features.forEach((feature) => {
+                if (feature.geometry.type === 'Polygon' || feature.geometry.type === 'MultiPolygon') {
+                    if (feature.geometry.type === 'Polygon') {
+                        feature.geometry.coordinates.forEach(polygon => {
+                            extendBounds(bounds, polygon);
+                        });
+                    } else {
+                        feature.geometry.coordinates.forEach(multiPolygon => {
+                            multiPolygon.forEach(polygon => {
+                                extendBounds(bounds, polygon);
+                            });
+                        });
+                    }
+                }
+            });
+        } else if (geojsonData.type === 'Feature' && (geojsonData.geometry.type === 'Polygon' || geojsonData.geometry.type === 'MultiPolygon')) {
+            if (geojsonData.geometry.type === 'Polygon') {
+                geojsonData.geometry.coordinates.forEach(polygon => {
+                    extendBounds(bounds, polygon);
+                });
+            } else {
+                geojsonData.geometry.coordinates.forEach(multiPolygon => {
+                    multiPolygon.forEach(polygon => {
+                        extendBounds(bounds, polygon);
+                    });
+                });
+            }
+        } else if (geojsonData.type === 'Polygon' || geojsonData.type === 'MultiPolygon') {
+            if (geojsonData.type === 'Polygon') {
+                geojsonData.coordinates.forEach(polygon => {
+                    extendBounds(bounds, polygon);
+                });
+            } else {
+                geojsonData.coordinates.forEach(multiPolygon => {
+                    multiPolygon.forEach(polygon => {
+                        extendBounds(bounds, polygon);
+                    });
+                });
+            }
+        }
+
+        // Check if bounds have been extended with valid coordinates
+        if (bounds.isEmpty()) {
+            console.error("Invalid bounds, unable to fit map.");
+        } else {
+            map.fitBounds(bounds, { padding: 20 });
+        }
+
+        // Add a popup on click event for the layer
+        map.on('click', 'farm_boundary-layer', (e) => {
+            const coordinates = e.lngLat;
+            const properties = e.features[0].properties;
+            let description = '<div style="display: flex; justify-content: space-between; align-items: center;">';
+            description += '<strong>Farm Boundary Details</strong>';
+            description += '</div>';
+            description += '<table style="width:100%;margin-top: 10px;">';
+            for (const key in properties) {
+                description += `<tr><td><strong>${key}</strong></td><td><input type="text" id="${key}" value="${properties[key]}" /></td></tr>`;
+            }
+            description += '</table>';
+            description += `<div style="margin-top: 10px; display: flex; justify-content: space-between;">`;
+            description += `<button id="delete-btn" data-properties='${JSON.stringify(properties)}' style="background:none;border:none;color:red;font-size:16px;cursor:pointer;"><i class="fas fa-trash-alt"></i> Delete</button>`;
+            description += `<button id="save-btn" data-properties='${JSON.stringify(properties)}' style="background:none;border:none;color:green;font-size:16px;cursor:pointer;"><i class="fas fa-save"></i> Save</button>`;
+            description += `<button id="close-btn" style="background:none;border:none;color:black;font-size:16px;cursor:pointer;"><i class="fas fa-times"></i> Close</button>`;
+            description += '</div>';
+
+            const popup = new mapboxgl.Popup()
+                .setLngLat(coordinates)
+                .setHTML(description)
+                .addTo(map);
+
+            document.getElementById('delete-btn').addEventListener('click', (event) => {
+                const properties = JSON.parse(event.target.getAttribute('data-properties'));
+                fetch(`/api/delete-geometry`, {
+                    method: 'POST', // Change DELETE to POST
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(properties),
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        alert('Boundary deleted successfully');
+                        map.getSource('farm_boundary').setData(''); // Clear the data to refresh the map
+                        popup.remove();
+                    } else {
+                        alert('Failed to delete boundary');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error deleting boundary:', error);
+                });
+            });
+
+            document.getElementById('save-btn').addEventListener('click', (event) => {
+                const properties = JSON.parse(event.target.getAttribute('data-properties'));
+                const updatedProperties = {};
+                for (const key in properties) {
+                    updatedProperties[key] = document.getElementById(key).value;
+                }
+                fetch(`/api/update-geometry`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(updatedProperties),
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        alert('Boundary updated successfully');
+                        map.getSource('farm_boundary').setData(''); // Clear the data to refresh the map
+                        popup.remove();
+                    } else {
+                        alert('Failed to update boundary');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error updating boundary:', error);
+                });
+            });
+
+            document.getElementById('close-btn').addEventListener('click', () => {
+                popup.remove();
+            });
+        });
+
+        map.on('mouseenter', 'farm_boundary-layer', () => {
+            map.getCanvas().style.cursor = 'pointer';
+        });
+
+        map.on('mouseleave', 'farm_boundary-layer', () => {
+            map.getCanvas().style.cursor = '';
+        });
+    }
+
+    // Add the GeoJSON data to the map
+    map.on('load', () => {
+        addGeojsonDataToMap(geojsonData);
+    });
+        </script>
+
+    {% comment %} <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script>
+        var map = L.map('map').setView([20.690498668, 77.2566], 13);
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        var geojsonData = {{ geojson_data|safe }};
+
+        L.geoJSON(geojsonData).addTo(map);
+    </script> {% endcomment %}
+</body>
+</html>

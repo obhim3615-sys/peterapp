@@ -1,0 +1,987 @@
+{
+	"info": {
+		"_postman_id": "c7c575df-4c83-4d28-8a87-5316ab771c21",
+		"name": "Api collection3",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "org_member_list",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/org_member_list/?org_id=1&secret-key={{api_secret_key}}",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"org_member_list",
+						""
+					],
+					"query": [
+						{
+							"key": "org_id",
+							"value": "1"
+						},
+						{
+							"key": "secret-key",
+							"value": "{{api_secret_key}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "org_member_first_time_user_list",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/org_member_first_time_user_list/?org_id=1&secret-key={{api_secret_key}}",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"org_member_first_time_user_list",
+						""
+					],
+					"query": [
+						{
+							"key": "org_id",
+							"value": "1"
+						},
+						{
+							"key": "secret-key",
+							"value": "{{api_secret_key}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "org_member_download_list",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/org_member_download_list/?org_id=1&secret-key={{api_secret_key}}",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"org_member_download_list",
+						""
+					],
+					"query": [
+						{
+							"key": "org_id",
+							"value": "1"
+						},
+						{
+							"key": "secret-key",
+							"value": "{{api_secret_key}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update_profilepicture",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/update_profilepicture/?org_id=11258&secret-key={{api_secret_key}}",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"update_profilepicture",
+						""
+					],
+					"query": [
+						{
+							"key": "org_id",
+							"value": "11258"
+						},
+						{
+							"key": "secret-key",
+							"value": "{{api_secret_key}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update_fcmtoken",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/update_fcmtoken/?user_id=1&secret-key={{api_secret_key}}",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"update_fcmtoken",
+						""
+					],
+					"query": [
+						{
+							"key": "user_id",
+							"value": "1"
+						},
+						{
+							"key": "secret-key",
+							"value": "{{api_secret_key}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update_status_community",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/update_status_community/?post_id=1&secret-key={{api_secret_key}}",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"update_status_community",
+						""
+					],
+					"query": [
+						{
+							"key": "post_id",
+							"value": "1"
+						},
+						{
+							"key": "secret-key",
+							"value": "{{api_secret_key}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add_community_reporting",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"user_id\":5578,\r\n    \"post_id\":244\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/api/add_community_reporting/",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"add_community_reporting",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add_user_reporting",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/add_user_reporting/",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"add_user_reporting",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add_comment_reporting",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/add_comment_reporting/",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"add_comment_reporting",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update_installedapp",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/update_installedapp/?org_id=1&secret-key={{api_secret_key}}",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"update_installedapp",
+						""
+					],
+					"query": [
+						{
+							"key": "org_id",
+							"value": "1"
+						},
+						{
+							"key": "secret-key",
+							"value": "{{api_secret_key}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "district_list",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/district_list/?org_id=1&secret-key={{api_secret_key}}",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"district_list",
+						""
+					],
+					"query": [
+						{
+							"key": "org_id",
+							"value": "1"
+						},
+						{
+							"key": "secret-key",
+							"value": "{{api_secret_key}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "taluka_list",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/taluka_list/?user_id=13558&secret-key={{api_secret_key}}&state=-&district=-&language=hindi",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"taluka_list",
+						""
+					],
+					"query": [
+						{
+							"key": "user_id",
+							"value": "13558"
+						},
+						{
+							"key": "secret-key",
+							"value": "{{api_secret_key}}"
+						},
+						{
+							"key": "state",
+							"value": "-"
+						},
+						{
+							"key": "district",
+							"value": "-"
+						},
+						{
+							"key": "language",
+							"value": "hindi"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "village_list",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/village_list/?user_id=1&secret-key={{api_secret_key}}",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"village_list",
+						""
+					],
+					"query": [
+						{
+							"key": "user_id",
+							"value": "1"
+						},
+						{
+							"key": "secret-key",
+							"value": "{{api_secret_key}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "location_list_admin",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/location_list_admin/?secret-key={{api_secret_key}}",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"location_list_admin",
+						""
+					],
+					"query": [
+						{
+							"key": "secret-key",
+							"value": "{{api_secret_key}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "state_list_admin",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/state_list_admin/?org_id=1&secret-key={{api_secret_key}}",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"state_list_admin",
+						""
+					],
+					"query": [
+						{
+							"key": "org_id",
+							"value": "1"
+						},
+						{
+							"key": "secret-key",
+							"value": "{{api_secret_key}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "district_list_admin",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/district_list_admin/?org_id=1&secret-key={{api_secret_key}}",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"district_list_admin",
+						""
+					],
+					"query": [
+						{
+							"key": "org_id",
+							"value": "1"
+						},
+						{
+							"key": "secret-key",
+							"value": "{{api_secret_key}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "taluka_list_admin",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/taluka_list_admin/?org_id=1&secret-key={{api_secret_key}}",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"taluka_list_admin",
+						""
+					],
+					"query": [
+						{
+							"key": "org_id",
+							"value": "1"
+						},
+						{
+							"key": "secret-key",
+							"value": "{{api_secret_key}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "village_list_admin",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/village_list_admin/?org_id=1&secret-key={{api_secret_key}}",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"village_list_admin",
+						""
+					],
+					"query": [
+						{
+							"key": "org_id",
+							"value": "1"
+						},
+						{
+							"key": "secret-key",
+							"value": "{{api_secret_key}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "org_details",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/org_details/?org_id=41&secret-key={{api_secret_key}}",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"org_details",
+						""
+					],
+					"query": [
+						{
+							"key": "org_id",
+							"value": "41"
+						},
+						{
+							"key": "secret-key",
+							"value": "{{api_secret_key}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "stressed_farms",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/stressed_farms/?org_id=1&secret-key={{api_secret_key}}",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"stressed_farms",
+						""
+					],
+					"query": [
+						{
+							"key": "org_id",
+							"value": "1"
+						},
+						{
+							"key": "secret-key",
+							"value": "{{api_secret_key}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add_compliance",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"user_id\":6562\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/api/add_compliance/",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"add_compliance",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "doc_list",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/doc_list/?user_id=45&secret-key={{api_secret_key}}",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"doc_list",
+						""
+					],
+					"query": [
+						{
+							"key": "user_id",
+							"value": "45"
+						},
+						{
+							"key": "secret-key",
+							"value": "{{api_secret_key}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "doc_view",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/doc_view/?doc_id=41&secret-key={{api_secret_key}}",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"doc_view",
+						""
+					],
+					"query": [
+						{
+							"key": "doc_id",
+							"value": "41"
+						},
+						{
+							"key": "secret-key",
+							"value": "{{api_secret_key}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete_doc",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/delete_doc/?doc_id=1&secret-key={{api_secret_key}}",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"delete_doc",
+						""
+					],
+					"query": [
+						{
+							"key": "doc_id",
+							"value": "1"
+						},
+						{
+							"key": "secret-key",
+							"value": "{{api_secret_key}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add_input",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/add_input/",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"add_input",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "product_category",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/product_category/?secret-key={{api_secret_key}}",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"product_category",
+						""
+					],
+					"query": [
+						{
+							"key": "secret-key",
+							"value": "{{api_secret_key}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add_farmer_request",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/add_farmer_request/",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"add_farmer_request",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "product_list_input",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/product_list_input/?org_id=1&secret-key={{api_secret_key}}",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"product_list_input",
+						""
+					],
+					"query": [
+						{
+							"key": "org_id",
+							"value": "1"
+						},
+						{
+							"key": "secret-key",
+							"value": "{{api_secret_key}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "product_details",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/product_details/?prod_id=1&secret-key={{api_secret_key}}",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"product_details",
+						""
+					],
+					"query": [
+						{
+							"key": "prod_id",
+							"value": "1"
+						},
+						{
+							"key": "secret-key",
+							"value": "{{api_secret_key}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "farmer_request_list",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/farmer_request_list/?org_id=1&secret-key={{api_secret_key}}",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"farmer_request_list",
+						""
+					],
+					"query": [
+						{
+							"key": "org_id",
+							"value": "1"
+						},
+						{
+							"key": "secret-key",
+							"value": "{{api_secret_key}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "admin_request_list",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/admin_request_list/?org_id=1&secret-key={{api_secret_key}}",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"admin_request_list",
+						""
+					],
+					"query": [
+						{
+							"key": "org_id",
+							"value": "1"
+						},
+						{
+							"key": "secret-key",
+							"value": "{{api_secret_key}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update_request_status",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/update_request_status/?request_id=1&secret-key={{api_secret_key}}",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"update_request_status",
+						""
+					],
+					"query": [
+						{
+							"key": "request_id",
+							"value": "1"
+						},
+						{
+							"key": "secret-key",
+							"value": "{{api_secret_key}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update_firsttimelogin",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/update_firsttimelogin/?user_id=1&secret-key={{api_secret_key}}",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"update_firsttimelogin",
+						""
+					],
+					"query": [
+						{
+							"key": "user_id",
+							"value": "1"
+						},
+						{
+							"key": "secret-key",
+							"value": "{{api_secret_key}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update_profile",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/Update_profile/?user_id=1&secret-key={{api_secret_key}}",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"Update_profile",
+						""
+					],
+					"query": [
+						{
+							"key": "user_id",
+							"value": "1"
+						},
+						{
+							"key": "secret-key",
+							"value": "{{api_secret_key}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update_profileimg",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/update_profileimg/?user_id=1&secret-key={{api_secret_key}}",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"update_profileimg",
+						""
+					],
+					"query": [
+						{
+							"key": "user_id",
+							"value": "1"
+						},
+						{
+							"key": "secret-key",
+							"value": "{{api_secret_key}}"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

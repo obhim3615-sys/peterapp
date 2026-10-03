@@ -1,0 +1,243 @@
+{% extends 'admin/base_site.html' %}
+
+{% block content %}
+
+<div class="module">
+    <div class=" module_table">
+    
+    <div class="results" id="changelist">  
+        <div class="actions">  
+            <form>
+            <label>Action: 
+                <!-- Your HTML content here -->
+                <select id="mySelect" name="bd_name"style="width: 300px;">
+                    <!-- Options will be populated dynamically -->
+                    {% for i in user_data %}
+                    <option value="">Select User</option>
+                    <option>{{i.full_name}} ({{i.mobile_number}})</option>
+                    {% endfor %}
+                </select>
+    
+             </label>
+    
+            <button type="submit"   title="Run the selected action" name="index" value="0">Submit</button>            
+             
+        </form>
+
+        <form>
+            <label>Action:
+                <!-- Your HTML content here -->
+                <input type="date" name="greater_than" value="{{greater_than}}"/>
+                <input type="date" name="less_than" value="{{less_than }}"/>
+    
+             </label>
+    
+            <button type="submit"   title="Search date" name="index" value="0">Submit</button>            
+             
+        </form>
+        <a href="/admin/bd-subtask-show/{{id}}"><button >Clear</button></a>
+        </div>  
+
+        <table id="result_list" width="100%" >
+            <thead>
+            <tr>
+                <th scope="col" class="sortable column-id">
+                    <div class="text">
+                        {% if id_sort and id_sort == '1' %}
+                        <a href="?id_sort=0">ID</a>
+                        {% else %}
+                        <a href="?id_sort=1">ID</a>
+                        {% endif %}
+                    </div>
+                    <div class="clear"></div>
+                 </th>          
+          
+                <th scope="col" class="sortable column-id">
+
+                    <div class="text">
+                        {% if task_sort and task_sort == '1' %}
+                        <a href="?task_sort=0">Task Name</a>
+                        {% else %}
+                        <a href="?task_sort=1">Task Name</a>
+                        {% endif %}
+                    </div>
+                    <div class="clear"></div>
+                 </th>
+                 <th scope="col" class="sortable column-id">
+                    <div class="text">
+                        {% if name_sort and name_sort == '1' %}
+                        <a href="?name_sort=0">Created By</a>
+                        {% else %}
+                        <a href="?name_sort=1">Name</a>
+                        {% endif %}
+                    </div>
+                    <div class="clear"></div>
+                 </th>
+
+                 <th scope="col" class="sortable column-id">
+                    <div class="text"><a href="#">Date time</a></div>
+                    <div class="clear"></div>
+                 </th>
+
+                 <th scope="col" class="sortable column-id">
+                    <div class="text"><a href="#">Title of Activity</a></div>
+                    <div class="clear"></div>
+                 </th>
+
+                 <th scope="col" class="sortable column-id">
+                    <div class="text"><a href="#">Description</a></div>
+                    <div class="clear"></div>
+                 </th>
+                 <th scope="col" class="sortable column-id">
+                    <div class="text"><a href="#">Latitude</a></div>
+                    <div class="clear"></div>
+                 </th>
+                 <th scope="col" class="sortable column-id">
+                    <div class="text"><a href="#">Longitude</a></div>
+                    <div class="clear"></div>
+                 </th>
+                 <th scope="col" class="sortable column-id">
+                    <div class="text"><a href="#">Status</a></div>
+                    <div class="clear"></div>
+                 </th>
+                 <th scope="col" class="sortable column-id">
+                    <div class="text"><a href="#">Images</a></div>
+                    <div class="clear"></div>
+                 </th>
+                
+                {% for k in form_column %}
+                    
+                        <th scope="col" class="sortable column-id">
+                            <div class="text"><a href="#">{{k.name}} </a></div>
+                            <div class="clear"></div>
+                        </th>
+                {% endfor %}
+                                
+            </tr>
+            </thead>
+            <tbody>
+            
+                {% for i in data %}
+                <tr >
+                <td class="field-org_name">{{i.id}}</td>
+                <td class="field-logo">{{i.taskbd.task_name}}</td>
+                <td class="field-logo">{{i.created_by.full_name}}</td>
+                <td class="field-logo">{{i.date_time_of_activity}}</td>
+                <td class="field-logo">{{i.title_of_activity}}</td>
+                <td class="field-logo">{{i.description}}</td>
+                <td class="field-logo">{{i.latitude}}</td>
+                <td class="field-logo">{{i.longitude}}</td>
+                <td class="field-logo">{{i.status}}</td>
+                <td class="field-logo">
+                    {% for i in i.subtask_subtask_img.all %}
+                        <a href="{{i.image_url}}">Check Image</a>, 
+                    {% endfor %}
+                </td>
+                {% if i.custom_form_data|length > 0 %}
+                {% for k in i.custom_form_data %}
+                {% if k and k|length > 0  %}
+                <td class="field-logo">{{k.value}}</td>
+                {% endif %}
+                    {% endfor %}
+                {% endif %}
+                </tr>
+                {% endfor %}
+            </tbody>
+            </table>
+        </div>
+         <!-- Pagination links -->
+    <div class="pagination">
+        <span class="step-links">
+            {% if page_obj.has_previous %}
+                <a href="?page=1">&laquo; first</a>
+                <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+            {% endif %}
+
+            <span class="current">
+                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+            </span>
+
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}">next</a>
+                <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
+    </div>
+    </div>
+
+    <script>
+
+        $(document).ready(function() {
+            // Initialize Select2
+            $('#mySelect').select2({
+                tags: true, // Allow custom tags
+                tokenSeparators: [',', ' '], // Define token separators for multiple tags
+                placeholder: 'Type to search or add new item',
+                // Add additional options as needed
+            });
+
+
+            // Select the <select> element with the id #selectOptions
+            var selectElement = $('#mySelect');
+
+            // Initialize Select2
+            selectElement.select2();
+            
+            selectElement.on('select2:open', function() {
+                call_ajax("",selectElement);
+            });
+            $(document).on('keyup', '.select2-search__field', function (e) { 
+                var inputValue = $(this).val();
+                call_ajax(inputValue,selectElement);
+            
+            });
+
+        });
+
+        function call_ajax(inputValue,selectElement){
+            
+                $.ajax({
+                    url: '/api/v1/core/get-user-ajax?user='+inputValue,  // Replace 'your-api-endpoint' with your actual API URL
+                    method: 'GET',  // Use the appropriate HTTP method (GET, POST, etc.)
+                    success: function(response) {
+                        // Extract the full_name key from each object in the response.data array
+                        var names = response.data.map(function(item) {
+                            return item.full_name+" ("+item.mobile_number+")";
+                        });
+    
+                        // Clear any existing options
+                        selectElement.empty();
+    
+                        // Iterate over the names array and append each name as an option to the select element
+                        $.each(names, function(index, name) {
+                            // Create a new <option> element
+                            var option = $('<option></option>');
+    
+                            // Set the text of the option to the name
+                            option.text(name);
+    
+                            // Append the option to the select element
+                            selectElement.append(option);
+                        });
+                        console.log("get data")
+                        selectElement.trigger('change');
+                        
+                    },
+                    error: function(xhr, status, error) {
+                        // Handle errors
+                        console.error(xhr.responseText);
+                    }
+                });
+        } 
+            
+        /*$.ajax({
+            url:"/api/v1/core/get-user-ajax?user=Some",
+            type:"get",
+            success:function(data){
+
+            }
+        })*/
+        
+    </script>
+{% endblock %}

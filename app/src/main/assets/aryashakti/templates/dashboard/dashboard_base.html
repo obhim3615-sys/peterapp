@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farm Activity Dashboard</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f4f4f4; }
+        .header { background: #4CAF50; padding: 20px; text-align: center; color: white; }
+        .footer { background: #4CAF50; padding: 10px; text-align: center; color: white;  width: 100%; bottom: 0; }
+        .menu { margin: 10px; padding: 10px; background: #e2e2e2; text-align: center; }
+        .content { padding: 20px; }
+        .btn { padding: 10px 20px; background-color: #4CAF50; color: white; border: none; cursor: pointer; text-decoration: none; }
+        .btn:hover { background-color: #45a049; }
+        .activity { display: flex; justify-content: space-between; margin-bottom: 40px; }
+        .activity-details { width: 45%; padding: 10px; background-color: #e0f7fa; border-radius: 10px; }
+        .slider-container { width: 45%; }
+        .slider { width: 100%; overflow: hidden; position: relative; background-color: #e0f7fa; border-radius: 10px; }
+        .slides { display: flex; transition: transform 0.5s ease-in-out; }
+        .slide { min-width: 100%; box-sizing: border-box; }
+        .slide img { width: 100%; border-radius: 10px; }
+        .nav { text-align: center; margin-top: 10px; }
+        .nav button { padding: 10px; background: #4CAF50; color: white; border: none; cursor: pointer; border-radius: 5px; }
+        .nav button:hover { background: #45a049; }
+    </style>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+<body>
+    <div class="header">
+        <h1>Farm Activity Dashboard</h1>
+    </div>
+    <div class="menu">
+        <a href="/dashboard/dasboard-withcsv/" class="btn">Farmwise Progress</a>
+        <a href="/dashboard/dasboard-farms-for-activity/" class="btn">Activity details</a>
+        {% comment %} <a href="/dashboard/dasboard-activity-for-farm/" class="btn">Activity For Farm</a> {% endcomment %}
+    </div>
+
+    {% block content %}{% endblock %}
+
+
+    <div class="footer">
+        <p>&copy; 2024 Farm Dashboard</p>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        function prevSlide(id) {
+            const slides = document.querySelector(`#slider-${id} .slides`);
+            slides.insertBefore(slides.lastElementChild, slides.firstElementChild);
+        }
+
+        function nextSlide(id) {
+            const slides = document.querySelector(`#slider-${id} .slides`);
+            slides.appendChild(slides.firstElementChild);
+        }
+
+        $(document).ready(function() {
+            $('#farm_data').on('change', function() {
+                const data = $(this).val();
+                window.location.href = window.location.pathname + "?farm_id=" + data;
+            });
+        });
+    </script>
+</body>
+</html>

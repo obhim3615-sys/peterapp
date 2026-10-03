@@ -1,0 +1,1279 @@
+{
+	"info": {
+		"_postman_id": "a8f4ba9c-2426-49a7-a9d2-0266cc17e025",
+		"name": "Api collections 1",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "signup",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"mobile_number\" : \"8915834984\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/api/signup/",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"signup",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "notification",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{base_url}}/api/notification/?user_id=1&secret-key={{api_secret_key}}&",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"notification",
+						""
+					],
+					"query": [
+						{
+							"key": "user_id",
+							"value": "1"
+						},
+						{
+							"key": "secret-key",
+							"value": "{{api_secret_key}}"
+						},
+						{
+							"key": "",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "order_list",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/order_list/?user_id=1&secret-key={{api_secret_key}}&",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"order_list",
+						""
+					],
+					"query": [
+						{
+							"key": "user_id",
+							"value": "1"
+						},
+						{
+							"key": "secret-key",
+							"value": "{{api_secret_key}}"
+						},
+						{
+							"key": "",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "crop_list",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"\r",
+							"pm.test(\"Status code name has string\", function () {\r",
+							"    pm.response.to.have.status(\"OK\");\r",
+							"});\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/crop_list/?user_id=1&secret-key={{api_secret_key}}&",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"crop_list",
+						""
+					],
+					"query": [
+						{
+							"key": "user_id",
+							"value": "1"
+						},
+						{
+							"key": "secret-key",
+							"value": "{{api_secret_key}}"
+						},
+						{
+							"key": "",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "variety_list",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/variety_list/?crop_id=1&secret-key={{api_secret_key}}",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"variety_list",
+						""
+					],
+					"query": [
+						{
+							"key": "crop_id",
+							"value": "1"
+						},
+						{
+							"key": "secret-key",
+							"value": "{{api_secret_key}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "existinguser",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{base_url}}/api/existinguser/?mobile_number=7717792481&secret-key={{api_secret_key}}",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"existinguser",
+						""
+					],
+					"query": [
+						{
+							"key": "mobile_number",
+							"value": "7717792481"
+						},
+						{
+							"key": "secret-key",
+							"value": "{{api_secret_key}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addfarm",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [],
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/api/addfarm/",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"addfarm",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "mobile",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/mobile/?user_id=1&secret-key={{api_secret_key}}&",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"mobile",
+						""
+					],
+					"query": [
+						{
+							"key": "user_id",
+							"value": "1"
+						},
+						{
+							"key": "secret-key",
+							"value": "{{api_secret_key}}"
+						},
+						{
+							"key": "",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addmachine",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"machine_name\":\"CombineHarvester\",\r\n    \"machine_model\":\"Cclass\",\r\n   \r\n    \"user_id\":5651\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/api/addmachine/",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"addmachine",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "farm_list_admin",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/farm_list_admin/?org_id=7&secret-key={{api_secret_key}}&",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"farm_list_admin",
+						""
+					],
+					"query": [
+						{
+							"key": "org_id",
+							"value": "7"
+						},
+						{
+							"key": "secret-key",
+							"value": "{{api_secret_key}}"
+						},
+						{
+							"key": "",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "farm_list_featured",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/farm_list_featured/?org_id=1&secret-key={{api_secret_key}}",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"farm_list_featured",
+						""
+					],
+					"query": [
+						{
+							"key": "org_id",
+							"value": "1"
+						},
+						{
+							"key": "secret-key",
+							"value": "{{api_secret_key}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addsellcrop",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/api/addsellcrop/",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"addsellcrop",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "sellcrop_list",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/sellcrop_list/?user_id=14&secret-key={{api_secret_key}}",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"sellcrop_list",
+						""
+					],
+					"query": [
+						{
+							"key": "user_id",
+							"value": "14"
+						},
+						{
+							"key": "secret-key",
+							"value": "{{api_secret_key}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "sellcrop_admin_list",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/sellcrop_admin_list/?org_id=1&secret-key={{api_secret_key}}",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"sellcrop_admin_list",
+						""
+					],
+					"query": [
+						{
+							"key": "org_id",
+							"value": "1"
+						},
+						{
+							"key": "secret-key",
+							"value": "{{api_secret_key}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "offers_list",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/offers_list/?user_id=3&secret-key={{api_secret_key}}",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"offers_list",
+						""
+					],
+					"query": [
+						{
+							"key": "user_id",
+							"value": "3"
+						},
+						{
+							"key": "secret-key",
+							"value": "{{api_secret_key}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "offer_details",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/offer_details/?offer_id=1&secret-key={{api_secret_key}}",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"offer_details",
+						""
+					],
+					"query": [
+						{
+							"key": "offer_id",
+							"value": "1"
+						},
+						{
+							"key": "secret-key",
+							"value": "{{api_secret_key}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "training_list",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/training_list/?id=1393&secret-key={{api_secret_key}}",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"training_list",
+						""
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1393"
+						},
+						{
+							"key": "secret-key",
+							"value": "{{api_secret_key}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "training_details",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/training_details/?training_id=41&secret-key={{api_secret_key}}",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"training_details",
+						""
+					],
+					"query": [
+						{
+							"key": "training_id",
+							"value": "41"
+						},
+						{
+							"key": "secret-key",
+							"value": "{{api_secret_key}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete_product_list",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/delete_product_list/?product_id=100&secret-key={{api_secret_key}}",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"delete_product_list",
+						""
+					],
+					"query": [
+						{
+							"key": "product_id",
+							"value": "100"
+						},
+						{
+							"key": "secret-key",
+							"value": "{{api_secret_key}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "popular_product_list",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/popular_product_list/?&secret-key={{api_secret_key}}",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"popular_product_list",
+						""
+					],
+					"query": [
+						{
+							"key": null,
+							"value": null
+						},
+						{
+							"key": "secret-key",
+							"value": "{{api_secret_key}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add_deliveryaddress",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"user_id\":6565\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/api/add_deliveryaddress/",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"add_deliveryaddress",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addresslist",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/addresslist/?user_id=1&secret-key={{api_secret_key}}",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"addresslist",
+						""
+					],
+					"query": [
+						{
+							"key": "user_id",
+							"value": "1"
+						},
+						{
+							"key": "secret-key",
+							"value": "{{api_secret_key}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "news_list",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/news_list/?secret-key={{api_secret_key}}",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"news_list",
+						""
+					],
+					"query": [
+						{
+							"key": "secret-key",
+							"value": "{{api_secret_key}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "myplot_list",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/myplot_list/?user_id=135&secret-key={{api_secret_key}}",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"myplot_list",
+						""
+					],
+					"query": [
+						{
+							"key": "user_id",
+							"value": "135"
+						},
+						{
+							"key": "secret-key",
+							"value": "{{api_secret_key}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "news_details",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/news_details/?news_id=5827&secret-key={{api_secret_key}}",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"news_details",
+						""
+					],
+					"query": [
+						{
+							"key": "news_id",
+							"value": "5827"
+						},
+						{
+							"key": "secret-key",
+							"value": "{{api_secret_key}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "tracking",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/tracking/?order_id=1&secret-key={{api_secret_key}}",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"tracking",
+						""
+					],
+					"query": [
+						{
+							"key": "order_id",
+							"value": "1"
+						},
+						{
+							"key": "secret-key",
+							"value": "{{api_secret_key}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addorder",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"user_id\":1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/api/addorder/",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"addorder",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addseed",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"user_id\" : 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/api/addseed/",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"addseed",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addchemical",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"user_id\":1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/api/addchemical/",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"addchemical",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addimplements",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"user_id\":1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/api/addimplements/",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"addimplements",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addorderdetails",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/api/addorderdetails/",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"addorderdetails",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "prod_variantlist",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/prod_variantlist/?secret-key={{api_secret_key}}",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"prod_variantlist",
+						""
+					],
+					"query": [
+						{
+							"key": "secret-key",
+							"value": "{{api_secret_key}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "carousellistadmin",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/carousellistadmin/?user_id=41&secret-key={{api_secret_key}}",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"carousellistadmin",
+						""
+					],
+					"query": [
+						{
+							"key": "user_id",
+							"value": "41"
+						},
+						{
+							"key": "secret-key",
+							"value": "{{api_secret_key}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getmachines",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/getmachines//?org_id=20&secret-key={{api_secret_key}}",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"getmachines",
+						"",
+						""
+					],
+					"query": [
+						{
+							"key": "org_id",
+							"value": "20"
+						},
+						{
+							"key": "secret-key",
+							"value": "{{api_secret_key}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getimplements",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/getimplements/?secret-key={{api_secret_key}}",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"getimplements",
+						""
+					],
+					"query": [
+						{
+							"key": "secret-key",
+							"value": "{{api_secret_key}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addsocialpost",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"user_id\":5856,\r\n    \"org_id\":1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/api/addsocialpost/",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"addsocialpost",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addnotification",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "\r\n{\r\n    \"user_id\":358\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/api/addnotification/",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"addnotification",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updatefarm",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/updatefarm/?feed_id=13561&secret-key={{api_secret_key}}",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"updatefarm",
+						""
+					],
+					"query": [
+						{
+							"key": "feed_id",
+							"value": "13561"
+						},
+						{
+							"key": "secret-key",
+							"value": "{{api_secret_key}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "social_profile",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/social_profile/?user_id=11262&secret-key={{api_secret_key}}",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"social_profile",
+						""
+					],
+					"query": [
+						{
+							"key": "user_id",
+							"value": "11262"
+						},
+						{
+							"key": "secret-key",
+							"value": "{{api_secret_key}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "edit_profile",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/edit_profile/?user_id=11259&secret-key={{api_secret_key}}",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"edit_profile",
+						""
+					],
+					"query": [
+						{
+							"key": "user_id",
+							"value": "11259"
+						},
+						{
+							"key": "secret-key",
+							"value": "{{api_secret_key}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "carousellist",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/carousellist/?user_id1&secret-key={{api_secret_key}}",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"carousellist",
+						""
+					],
+					"query": [
+						{
+							"key": "user_id1",
+							"value": null
+						},
+						{
+							"key": "secret-key",
+							"value": "{{api_secret_key}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addinquiry",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/addinquiry/",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"addinquiry",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update_doc",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/update_doc/",
+					"host": [
+						"{{base_url_host}}"
+					],
+					"path": [
+						"api",
+						"update_doc",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

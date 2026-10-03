@@ -1,0 +1,67 @@
+{% extends 'admin/base_site.html' %}
+
+{% block content %}
+
+<div class="module">
+    <div class=" module_table">
+    
+    
+    <div style="padding:20px 0px ">
+       BD Manager : {{name}}
+    </div>
+    <div class="results" id="changelist">
+    <table id="result_list" width="48%" style="float:left;">
+        <thead>
+        <tr>
+            <th scope="col" class="sortable column-id">
+                <div class="text"><a href="#">Date</a></div>
+                <div class="clear"></div>
+             </th>
+       
+            <th scope="col" class="sortable column-id">
+                <div class="text"><a href="#">Total User Created</a></div>
+                <div class="clear"></div>
+             </th>
+      
+        </tr>
+        </thead>
+        <tbody>
+        
+            {% for k,i in org_dict_user.items %}
+            <tr class="selected">
+            <td class="field-org_name">{{k}}</td>
+            <td class="field-logo">{{i.user_count}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+        </table>
+  
+        <table id="result_list" width="48%" style="float:left;margin-left:10px;">
+            <thead>
+            <tr>
+                <th scope="col" class="sortable column-id">
+                    <div class="text"><a href="#">Date</a></div>
+                    <div class="clear"></div>
+                 </th>          
+          
+                <th scope="col" class="sortable column-id">
+                    <div class="text"><a href="#">Total Farm Created</a></div>
+                    <div class="clear"></div>
+                 </th>
+            </tr>
+            </thead>
+            <tbody>
+            
+                {% for k,i in org_dict_farm.items %}
+                <tr class="selected">
+                <td class="field-org_name">{{k }}</td>
+                <td class="field-logo">{{i.farm_count}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+            </table>
+        </div>
+    </div>
+    </div>
+    
+{% endblock %}

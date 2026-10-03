@@ -1,0 +1,40 @@
+{% extends 'dashboard/dashboard_base.html' %}
+{% block content %}
+
+    <div class="content">
+        <form style="margin:20px 0px;">
+            <select class="form-control" id="farm_data">
+                {% for i in farm_data %}
+                    <option {% if i.id|stringformat:"s" == farm_id|stringformat:"s" %} selected {% endif %} value="{{ i.id }}">
+                        {{ i.name }}
+                    </option>
+                {% endfor %}
+            </select>
+        </form>
+
+        {% for x in activities %}
+            <div class="activity">
+                <div class="activity-details">
+                    <p><strong>Activity Name:</strong> {{ x.activity.name }}</p>
+                    <p><strong>Date of Activity:</strong> {{ x.date_of_activity }}</p>
+                    <p><strong>Day of Sowing:</strong> {{ x.day_of_sowing }}</p>
+                </div>
+                <div class="slider-container">
+                    <div class="slider" id="slider-{{ x.id }}">
+                        <div class="slides">
+                            {% for i in x.activity_image %}
+                                <div class="slide">
+                                    <img src="{{ i.image_url}}" alt="Activity Image">
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="nav" id="nav-{{ x.id }}">
+                        <button onclick="prevSlide({{ x.id }})">Previous</button>
+                        <button onclick="nextSlide({{ x.id }})">Next</button>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

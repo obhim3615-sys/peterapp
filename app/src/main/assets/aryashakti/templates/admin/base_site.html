@@ -1,0 +1,24 @@
+{% extends "admin/base.html" %}
+
+{% load static %}
+{% block extrahead %}
+        <link rel="shortcut icon" href="{% static 'img/favicon.ico'  %}" />
+        <!-- Include jQuery library -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Include Select2 CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
+    <!-- Include Select2 JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+    {% endblock %}
+
+    {% block title %}{{ title }}  {% endblock %}
+
+{% block branding %}
+<h1 id="site-name">
+    <a href="{% url 'admin:index' %}" style="vertical-align:middle">
+        <img src="{% static './img/logo.png' %}" height="90px" /> <span style="vertical-align:middle"></span>
+    </a>
+</h1>
+{% endblock %}
+
+{% block nav-global %}{% endblock %}
